@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./pages/Landing"
 import './App.css';
 import './assets/turnupMain.png'
+import signup from "./components/signup"
 
 
 function App() {
