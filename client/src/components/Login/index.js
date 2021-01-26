@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from 'reactstrap';
 import "./style.css"
 import Signup from "../signup"
-import {toggle} from "../signup"
+
 // import UserContext from "../../utils/userContext";
 
-function Login() {
+function Login(props) {
   
   return (
     <div id="login">
@@ -13,8 +13,8 @@ function Login() {
       <input></input>
       <h6>Pass Word</h6>
       <input></input>
-      <Button> </Button>
-      <Button onClick={toggle}>Signup</Button>
+      <Button>Log In</Button>
+      <Button onClick={props.onClick}>Signup</Button>
       
     </div>
   );

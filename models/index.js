@@ -1,4 +1,4 @@
 module.exports = {
-    Book: require("./")
-  };
-  
+  Book: require("./user"),
+  Event: require("./user")
+};

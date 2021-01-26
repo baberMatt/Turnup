@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import Login from "../Login"
 
 
 //const isAuthenticated = require("../../../../config/middleware/isAuthenticated");
@@ -20,6 +20,7 @@ function Signup(props) {
   return (
 
     <div>
+      <Login onClick={toggle}/>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
         <ModalBody>
