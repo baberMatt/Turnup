@@ -13,11 +13,18 @@ function Landing() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  return (
+  
+  
+  
+  
+  
+  
+      return (
     <div className="test">
-      <Login />
-      <Signup />
+      <Signup 
+       setUserName={setUserName}
+      />
+      <p>hi im: {userName}</p>
     </div>
   );
 }

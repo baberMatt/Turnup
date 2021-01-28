@@ -10,7 +10,7 @@ function Login(props) {
   return (
     <div id="login">
       <h6>User Name</h6>
-      <input></input>
+      <input onChange={event => props.setUserName(event.target.value)}></input>
       <h6>Pass Word</h6>
       <input></input>
       <Button>Log In</Button>
