@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 #background {
   background-image: url("./assets/turnupMain.png");
@@ -9,6 +7,8 @@
   background-size: cover;
   width: 100%;
   height: 100%;
+  position: absolute;
+  z-index: 0;
 }
 
 .test {
@@ -16,20 +16,12 @@
   width: 100vw;
 }
 
+#event {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  z-index: 1;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 

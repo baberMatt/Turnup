@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./pages/Landing"
+import Event from "./pages/Event"
 import './App.css';
 import './assets/turnupMain.png'
 import signup from "./components/signup"
@@ -14,6 +15,9 @@ function App() {
           <Route exact path="/">
             <Landing />
           </Route>
+          <Route exact path="/event">
+              <Event />
+           </Route>
         </Switch>
       </div>
     </Router>

@@ -14,13 +14,16 @@ function Signup(props) {
   } = props;
 
   const [modal, setModal] = useState(false);
+  
 
   const toggle = () => setModal(!modal);
 
   return (
 
     <div>
-      <Login onClick={toggle}/>
+      <Login 
+      setUserName={props.setUserName}
+      onClick={toggle}/>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
         <ModalBody>
