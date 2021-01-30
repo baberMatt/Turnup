@@ -5,7 +5,7 @@ import Event from "./pages/Event"
 import './App.css';
 import './assets/turnupMain.png'
 import signup from "./components/signup"
-
+import User from "./pages/User"
 
 function App() {
   return (
@@ -17,6 +17,9 @@ function App() {
           </Route>
           <Route exact path="/event">
               <Event />
+           </Route>
+           <Route exact path="/user/:Username">
+              <User />
            </Route>
         </Switch>
       </div>

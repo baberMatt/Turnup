@@ -1,20 +1,16 @@
-import axios from "axios";
+const router = require("express").Router();
+const controller = require("../../controllers/");
 
-export default {
-  // Gets all events
-  getEvents: function() {
-    return axios.get("/api/events");
-  },
-  // Gets the Event with the given id
-  getEvent: function(id) {
-    return axios.get("/api/events/" + id);
-  },
-  // Deletes the Event with the given id
-  deleteEvent: function(id) {
-    return axios.delete("/api/events/" + id);
-  },
-  // Saves a Event to the database
-  saveEvent: function(eventData) {
-    return axios.post("/api/events", eventData);
-  }
-};
+// Matches with "/api/user"
+router.route("/")
+  .get(controller.findAll)
+  .post(controller.create);
+
+// Matches with "/api/user/:id"
+router
+  .route("/:id")
+  .get(controller.findById)
+  .put(controller.update)
+  .delete(controller.remove);
+
+module.exports = router;
