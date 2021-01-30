@@ -18,11 +18,19 @@ function Signup(props) {
 
   const toggle = () => setModal(!modal);
 
+  function formSubmit() {
+    props.handleFormSubmit();
+    toggle();
+  }
+
+
   return (
 
     <div>
       <Login 
       setUserName={props.setUserName}
+      setPassword={props.setPassword}
+      handleSignIn={props.handleSignIn}
       onClick={toggle}/>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
@@ -36,16 +44,16 @@ function Signup(props) {
                     <h2 class="form-title">Sign up</h2>
                     <form method="POST" class="register-form" id="register-form">
                       <div class="form-group">
-                        <label for="name"></label>
-                        <input type="text" name="name" id="name" placeholder="Your Name" />
+                        <label for="username"></label>
+                        <input onChange={event => props.setUserName(event.target.value)} type="text" username="username" id="username" placeholder="Your User Name" />
                       </div>
                       <div class="form-group">
                         <label for="email"></label>
-                        <input type="email" name="email" id="email" placeholder="Your Email" />
+                        <input onChange={event => props.setEmail(event.target.value)}type="email" name="email" id="email" placeholder="Your Email" />
                       </div>
                       <div class="form-group">
                         <label for="pass"></label>
-                        <input type="password" name="pass" id="pass" placeholder="Password" />
+                        <input onChange={event => props.setPassword(event.target.value)}type="password" name="pass" id="pass" placeholder="Password" />
                       </div>
                       <div class="form-group">
                         <label for="re-pass"></label>
@@ -68,7 +76,7 @@ function Signup(props) {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
+          <Button color="primary" onClick={formSubmit}>Submit</Button>{' '}
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>

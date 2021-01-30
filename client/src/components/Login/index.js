@@ -9,11 +9,11 @@ function Login(props) {
   
   return (
     <div id="login">
-      <h6>User Name</h6>
+      <h6>Username</h6>
       <input onChange={event => props.setUserName(event.target.value)}></input>
-      <h6>Pass Word</h6>
-      <input></input>
-      <Button>Log In</Button>
+      <h6>Password</h6>
+      <input onChange={event => props.setPassword(event.target.value)}></input>
+      <Button onClick={props.handleSignIn}>Log In</Button>
       <Button onClick={props.onClick}>Signup</Button>
       
     </div>
