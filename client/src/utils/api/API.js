@@ -8,7 +8,7 @@ export default {
   // Gets the User with the given id
   signIn: function(userData) {
       console.log(userData)
-    return axios.get("/api/user/login", userData);
+    return axios.post("/api/user/login", userData);
   },
   // Deletes the User with the given id
   deleteUser: function(id) {
