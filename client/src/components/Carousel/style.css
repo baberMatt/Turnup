@@ -1,0 +1,21 @@
+img{
+    image-rendering: optimizeQuality;
+    height: 500px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    border: .05mm;
+    border-style: solid;
+    border-radius: 5mm;
+    position: relative;
+    object-fit: cover;
+    opacity: .80;
+
+}
+
+
+
+.slide{
+    margin-top: 13%;
+}

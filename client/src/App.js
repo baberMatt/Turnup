@@ -6,6 +6,8 @@ import './App.css';
 import './assets/turnupMain.png'
 import signup from "./components/signup"
 import User from "./pages/User"
+import Browse from "./pages/Browse";
+
 
 function App() {
   return (
@@ -16,11 +18,14 @@ function App() {
             <Landing />
           </Route>
           <Route exact path="/event">
-              <Event />
-           </Route>
-           <Route exact path="/user/:Username">
-              <User />
-           </Route>
+            <Event />
+          </Route>
+          <Route exact path="/user/:Username">
+            <User />
+          </Route>
+          <Route exact path="/browse">
+            <Browse />
+          </Route>
         </Switch>
       </div>
     </Router>
