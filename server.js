@@ -13,21 +13,20 @@ var session = require("express-session")
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(express.bodyParser());
-// app.use(express.session({ secret: 'keyboard cat' }));
+app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-passport.use(new LocalStrategy(
-  function(Username, Password, done) {
-    User.findOne({ Username: Username }, function (err, user) {
+passport.use(new LocalStrategy( 
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.validPassword(Password)) {
+      if (!user.validPassword(password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
@@ -44,6 +43,25 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+
+app.get('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/login'); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.json(req);
+    });
+  })(req, res, next);
+});
+
+// app.post('/login',
+//   passport.authenticate('local', {
+//     successRedirect: '/event',
+//     failureRedirect: '/user',
+//     failureFlash: true
+//   })
+// );
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

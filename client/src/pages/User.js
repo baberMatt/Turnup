@@ -1,9 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Container } from "../components/Grid";
+import {useParams} from "react-router-dom"
+// import { Col, Row, Container } from "../components/Grid";
+import API from "../utils/api/API";
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+// on page load, get user from params and call db.getall
+// setUser to res
+// 
+
 
 
 function User() {
-    const [User, setUser] = useState("");
+    const [user, setUser] = useState({});
+    const [attendingEvents, setAttendingEvents] = useState("")
+    let {Username} = useParams();
+    
+
+    useEffect(() => {
+        API.getUsers().then(res => {
+        setUser(res.data);
+        })
+    }, [])
 
     return (
         <div id="user" className="d-flex justify-content-center">
@@ -13,7 +32,7 @@ function User() {
                         <img src="UserImage"></img>
                     </div>
                     <div className="col-md-8 d-flex justify-content-center">
-                        <p>USERNAME</p>
+                        <p>{user[0].Username}</p>
                         <p>REAL NAME</p>
                         <p>ABOUT</p>
                     </div>
@@ -28,10 +47,17 @@ function User() {
                         <p>CALENDER</p>
                     </div>
                     <div className="col-md-6 d-flex justify-content-center">
-                        <p>EVENTS ATTENDING</p>
+                        list
+                         map data 
+                            attendingEvent 
+                              
                     </div>
                 </div>
+                
             </Container>
+
+
+            
         </div>
     );
 }
