@@ -14,18 +14,6 @@ router.route("/:id")
   .put(controller.update)
   .delete(controller.remove);
 
-router.route('/login'), function(req, next) {
-    req.get(controller.findAll)
-    
-    passport.authenticate('local', function(err, user, info) {
-      if (err) { return next(err); }
-      if (!user) { return res.redirect('/login'); }
-      req.logIn(user, function(err) {
-        if (err) { return next(err); }
-        return res.redirect('/users/' + user.username);
-      });
-    })(req, res, next);
 
-  });
 
 module.exports = router;

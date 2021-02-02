@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom"
 import API from "../utils/api/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -15,7 +16,7 @@ function Landing() {
   const [email, setEmail] = useState("email");
   const [password, setPassword] = useState("pass");
   
-  
+  let history = useHistory();
   function handleFormSubmit(event) {
     // event.preventDefault();
     if (userName && email && password ) {
@@ -35,7 +36,10 @@ function Landing() {
         Username: userName,
         Password: password
       })
-        .then(res => console.log("succefuls Log In"))
+        .then(res => {console.log(res.config.data)
+        history.push("/user/" + userName)
+
+        })
         .catch(err => console.log(err));
     }
   }
