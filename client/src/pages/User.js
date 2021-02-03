@@ -20,9 +20,12 @@ function User() {
 
     useEffect(() => {
         API.getUsers().then(res => {
-        setUser(res.data);
+        setUser(res.data[0]);
+        console.log("effect rendered")
         })
     }, [])
+
+    console.log(user)
 
     return (
         <div id="user" className="d-flex justify-content-center">
@@ -32,7 +35,7 @@ function User() {
                         <img src="UserImage"></img>
                     </div>
                     <div className="col-md-8 d-flex justify-content-center">
-                        <p>{user[0].Username}</p>
+                        <p>{user.Username}</p>
                         <p>REAL NAME</p>
                         <p>ABOUT</p>
                     </div>
