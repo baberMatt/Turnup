@@ -40,6 +40,13 @@ html {
 
 }
 /* User */
+#userPage {
+  margin-top: 10rem;
+}
+#profileImage {
+  width: 20rem;
+  height: 20rem;
+}
 
 /* Event */
 
