@@ -21,9 +21,9 @@ function Landing() {
     // event.preventDefault();
     if (userName && email && password ) {
       API.saveUser({
-        Username: userName,
-        Email: email,
-        Password: password
+        username: userName,
+        email: email,
+        password: password
       })
         .then(res => console.log("succefuls Post"))
         .catch(err => console.log(err));
