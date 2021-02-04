@@ -1,0 +1,129 @@
+
+
+#tabContainer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 250px;
+}
+
+.navtab {
+    background-image: url("../../assets/popuptab.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 120px;
+    height: 120px;
+    z-index: 1;
+    position: absolute;
+}
+
+.navlink {
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 18px;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #061c03; */
+   
+}
+
+a:link {
+    color: #f1e3cc;
+}
+
+#navtab1 {
+    position: absolute;
+    z-index: 1;
+    left: 23rem;
+    top: 4rem;
+    
+}
+#navtab2 {
+    position: absolute;
+    z-index: 1;
+    left: 24%;
+    top: 23%;
+    transform: rotate(11deg);
+}
+#navtab3 {
+    position: absolute;
+    z-index: 1;
+    left: 31%;
+    top: 34%;
+    transform: rotate(16deg);
+}
+#navtab4 {
+    position: absolute;
+    z-index: 1;
+    left: 38%;
+    top: 41%;
+    transform: rotate(8deg);
+}
+
+#navtab1isUp {
+    position: absolute;
+    z-index: 1;
+    left: 17%;
+    top: 1rem;
+}
+#navtab1isUp {
+    position: absolute;
+    z-index: 1;
+    left: 17%;
+    top: 1rem;
+}
+#navtab1isUp {
+    position: absolute;
+    z-index: 1;
+    left: 17%;
+    top: 1rem;
+}
+#navtab1isUp {
+    position: absolute;
+    z-index: 1;
+    left: 17%;
+    top: 1rem;
+}
+
+/* #navtab1 {
+    position: absolute;
+    z-index: 1;
+    left: 17%;
+    top: 21%;
+    
+} */
+/* .isUp2 {
+
+}
+.isUp3 {
+
+}
+.isUp4 {
+
+} */
+
+
+/* 
+var moveVals = [];
+        switch (tabNumb) {
+            case 1:
+                moveVals.push("3%");
+                moveVals.push("21%");
+                break;
+            case 2:
+                moveVals.push("4%");
+                moveVals.push("23%");
+                break;
+            case 3:
+                moveVals.push("14%");
+                moveVals.push("34%");
+                break;
+            case 4:
+                moveVals.push("23%");
+                moveVals.push("41%");
+                break;
+            default:
+                break;
+        } */

@@ -1,19 +1,28 @@
 /* Template/BG */
+html {
+  font-size: 16px;
+}
 
 #background {
-  background-image: url("./assets/turnupMain.png");
+  
   background-color: #64af49;
-  background-repeat: no-repeat;
-  background-size: cover;
+  
   width: 100%;
   height: 100%;
   position: absolute;
   z-index: 0;
 }
 
-.test {
-  height: 100vh;
-  width: 100vw;
+#pageBackground {
+  background-image: url("./assets/turnupMain.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 #event {
@@ -25,7 +34,11 @@
 }
 
 /* Landing */
+#landingContent {
+  position: relative;
+  margin-top: 25vh;
 
+}
 /* User */
 
 /* Event */
