@@ -31,19 +31,18 @@ function Event() {
                 <div className="row my-3 d-flex justify-content-around">
                     <div className="col-md-3 text-center">
                         <div className="border d-flex flex-column">
-                            <p>I'm baby </p>
-                            <p>I'm baby </p>
-                            <p>I'm baby </p>
-                            <p>I'm baby </p>
+                            <p>Event Name </p>
+                            <p>Event Name </p>
+                            <p>Even Name </p>
+                            <p>Event Name</p>
                         </div>
                     </div>
                     <div className="col-md-7 text-center">
                         <div className="border">
-                            <p>I'm baby wolf air plant actually stumptown organic. Cardigan lyft glossier shaman lo-fi, succulents poutine biodiesel coloring book. +1</p>
-                            <p>I'm baby wolf air plant actually stumptown organic. Cardigan lyft glossier shaman lo-fi, succulents poutine biodiesel coloring book. +1</p>
-                            <p>I'm baby wolf air plant actually stumptown organic. Cardigan lyft glossier shaman lo-fi, succulents poutine biodiesel coloring book. +1</p>
-                            <p>I'm baby wolf air plant actually stumptown organic. Cardigan lyft glossier shaman lo-fi, succulents poutine biodiesel coloring book. +1</p>
-
+                            <p>Hours of Operation</p>
+                            <p>Hours of Operation</p>
+                            <p>Hours of Operation</p>
+                            <p>Hours of Operation</p>
                        </div>
                     </div>
                 </div>
