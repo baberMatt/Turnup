@@ -20,10 +20,14 @@ function User() {
 
     useEffect(() => {
         API.getUsers().then(res => {
-            setUser(res.data);
-            console.log(res.data)
+
+        setUser(res.data[0]);
+        console.log("effect rendered")
+         
         })
     }, [])
+
+    console.log(user)
 
     return (
         <div id="userPage" className="d-flex justify-content-center">
@@ -32,6 +36,7 @@ function User() {
                     <div className="col-md-4 d-flex justify-content">
                         <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" id="profileImage"></img>
                     </div>
+
                     <div className="col-md-8 d-flex justify-content">
                         <div className="Row d-flex justify-content">
                             <div className="col-md-12 d-flex justify-content-center">
@@ -43,6 +48,7 @@ function User() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div className="Row d-flex justify-content">
