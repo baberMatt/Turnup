@@ -6,15 +6,17 @@ import Signup from "../signup"
 // import UserContext from "../../utils/userContext";
 
 function Login(props) {
-  
+
   return (
-    <div id="login">
-      <h6>Username</h6>
-      <input onChange={event => props.setUserName(event.target.value)}></input>
-      <h6>Password</h6>
-      <input onChange={event => props.setPassword(event.target.value)}></input>
-      <Button onClick={props.handleSignIn}>Log In</Button>
-      <Button onClick={props.onClick}>Signup</Button>
+    <div id="login d-flex flex-row no-wrap">
+      <table>
+        <tr>
+          <td><input size="3" className="input" onChange={event => props.setUserName(event.target.value)}></input></td>
+          <td><input size="3" className="input" onChange={event => props.setPassword(event.target.value)}></input></td>
+          <td><Button onClick={props.handleSignIn}>Log In</Button></td>
+        </tr>
+      </table>
+      
       
     </div>
   );

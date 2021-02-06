@@ -1,7 +1,17 @@
 #login {
-    position: absolute;
+    
+    /* position: absolute;
     top: 2%;
     left: 89%;
     border: 1px;
-    background-color: #024405;
+    background-color: #024405; */
+}
+.input {
+    
+}
+
+.loginCol {
+    position: absolute;
+    left: 76rem;
+    top: .5rem;
 }

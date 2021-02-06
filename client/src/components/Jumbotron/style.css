@@ -1,0 +1,44 @@
+#jumbo {
+    position: relative;
+}
+
+#jumboMain {
+    position: relative;
+    /* z-index: -1;
+    top: -70vh;
+    left: -20vh; */
+    /* transform: rotate(20deg);
+    transform: skewX(-15deg); */
+    
+}
+
+#jumboBG {
+    position: absolute;
+    z-index: 0;
+}
+
+.jumboImg {
+    width: 100%;
+    object-fit: contain;
+    
+}
+
+.jumboHR {
+    border-color: #061c03;
+    height: 1px;
+    width: 100%
+}
+
+#jumboContent {
+    color: #061c03;
+    position: absolute;
+    z-index: 1;
+    font-family: 'Londrina Solid', cursive;
+    font-weight: 400;
+}
+
+.signUp {
+    margin-left: 35%;
+}
+
+
