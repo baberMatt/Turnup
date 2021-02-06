@@ -22,7 +22,7 @@ function Signup(props) {
     props.handleFormSubmit();
     toggle();
   }
-
+  
 
   return (
 

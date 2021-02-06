@@ -8,6 +8,8 @@ router.route("/")
   .get(controller.findAll)
   .post(controller.create);
 
+router.route("/one")
+.get(controller.findOne)
 // Matches with "/api/user/:id"
 router.route("/:id")
   .get(controller.findById)

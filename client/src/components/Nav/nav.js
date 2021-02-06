@@ -1,4 +1,4 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -6,11 +6,14 @@ import Turnupicon from '../../assets/turnupIcon.png'
 import "./style.css"
 import Signup from "../signup";
 import Login from "../Login"
+import App from "../../App.js"
 
 
 // import UserContext from "../../utils/userContext";
 
 function Nav(props) {
+
+   
     
 
 
@@ -33,7 +36,11 @@ function Nav(props) {
                     <a href="#" className="m-auto">About Us</a>
                 </Col>
                 <Col lg={3} className="loginCol">
-                    <Login />
+                    <Login
+                        setUserName={props.setUserName}
+                        setPassword={props.setPassword}
+                        handleSignIn={props.handleSignIn}
+                    />
                 </Col>
             </Row>
 
