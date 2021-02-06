@@ -21,12 +21,17 @@ app.use(express.json());
 
 passport.use(new LocalStrategy( 
   function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
+    console.log(username, password)
+    User.findOne({ Username: username }, function (err, user) {
       if (err) { return done(err); }
+      console.log(user)
       if (!user) {
+        console.log("user doesnt not exist")
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.validPassword(password)) {
+      console.log(user.Password)
+      if (user.Password != password) {
+        console.log("password incorrect")
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
@@ -44,13 +49,14 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-app.get('/login', function(req, res, next) {
+app.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
+    console.log("in route", user)
     if (err) { return next(err); }
-    if (!user) { return res.redirect('/login'); }
+    if (!user) { return res.json("incorrect username"); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.json(req);
+      return res.json(user);
     });
   })(req, res, next);
 });

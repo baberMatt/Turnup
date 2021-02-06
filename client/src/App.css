@@ -11,13 +11,7 @@ html {
 
 
 
-#event {
-  position: absolute;
-  top: 20%;
-  width: 100%;
-  z-index: 1;
 
-}
 
 .btn { 
   background-color: #7dd337 !important;
@@ -91,7 +85,8 @@ html {
 
 /* User */
 #userPage {
-  margin-top: 10rem;
+  
+  background-image: url("./assets/turnupBGlong.png");
 }
 #profileImage {
   width: 20rem;
@@ -99,5 +94,16 @@ html {
 }
 
 /* Event */
+#event {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  z-index: 1;
+
+}
+
 
 /* Browse */
+ #browsePage {
+ background-image: url("./assets/turnupBGlong.png")
+}

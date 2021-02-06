@@ -12,22 +12,23 @@ import Container from 'react-bootstrap/Container'
 
 
 
-function User() {
-    const [user, setUser] = useState({});
+function User(props) {
+    
+    
     const [attendingEvents, setAttendingEvents] = useState("")
     let { Username } = useParams();
+    console.log(props)
 
+    // useEffect(() => {
+    //     API.getUser({ Username: props.userName}).then(res => {
 
-    useEffect(() => {
-        API.getUsers().then(res => {
-
-        setUser(res.data[0]);
-        console.log("effect rendered")
+    //     setUser(res.data);
+    //     console.log("effect rendered")
          
-        })
-    }, [])
+    //     })
+    // }, [])
 
-    console.log(user)
+    // console.log(user)
 
     return (
         <div id="userPage" className="d-flex justify-content-center">
@@ -41,10 +42,10 @@ function User() {
                         <div className="Row d-flex justify-content">
                             <div className="col-md-12 d-flex justify-content-center">
                                 <div>
-                                    <h3>FIRST NAME</h3>
-                                    <h3>LAST NAME</h3>
+                                    <h3>{props.user.firstName}</h3>
+                                    <h3>{props.user.lastName}</h3>
                                     <h3>ABOUT ME</h3>
-                                    <p>Neque ornare aenean euismod elementum nisi quis eleifend quam adipiscing. Sed pulvinar proin gravida hendrerit lectus. Et netus et malesuada fames ac. Risus nullam eget felis eget nunc lobortis. Congue nisi vitae suscipit tellus mauris a diam</p>
+                                    <p>{props.user.about}</p>
                                 </div>
                             </div>
                         </div>

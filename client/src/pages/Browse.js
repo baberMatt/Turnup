@@ -14,7 +14,7 @@ function Browse() {
 
 
     return (
-        <div>
+        <div id="browsePage">
 
             <Container fluid>
                 <Row >
