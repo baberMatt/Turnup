@@ -1,29 +1,15 @@
+/* -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc; */
+
+
 /* Template/BG */
 html {
   font-size: 16px;
 }
 
-#background {
-  
-  background-color: #64af49;
-  
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 0;
-}
 
-#pageBackground {
-  background-image: url("./assets/turnupMain.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
+
 
 #event {
   position: absolute;
@@ -33,12 +19,76 @@ html {
 
 }
 
+.btn { 
+  background-color: #7dd337 !important;
+  border-color: #061c03;
+}
+
 /* Landing */
+
+#langingPage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+
 #landingContent {
   position: relative;
-  margin-top: 25vh;
+  margin-top: 76vh;
+  color: #061c03;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
 
 }
+
+#landing1 {
+  width: 100vw;
+  height: 35vh;
+  background-image: url("./assets/turnupBGxshort.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+#landing1 .header {
+  margin-left: -5rem;
+}
+
+#landing1 .bodyText {
+  margin-left: 5rem;
+}
+
+#landing3 .header {
+  margin-right: -5rem;
+}
+
+#landing3 .bodyText {
+  margin-right: 5rem;
+}
+
+#landing2 {
+  width: 100vw;
+  height: 35vh;
+  background-image: url("./assets/pancakes.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#landing3 {
+  width: 100vw;
+  height: 35vh;
+  background-image: url("./assets/turnupBGxshort.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 /* User */
 #userPage {
   margin-top: 10rem;

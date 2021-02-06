@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 // import { Col, Row, Container } from "../components/Grid";
-// import API from "../utils/api/API.js";
+import API from "../utils/api/API.js";
 import Container from 'react-bootstrap/Container'
 // import Row from 'react-bootstrap/Row'
 // import Col from 'react-bootstrap/Col'
