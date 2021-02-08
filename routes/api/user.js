@@ -9,8 +9,8 @@ router.route("/")
   .post(controller.create);
 
 router.route("/one")
-.get(controller.findOne)
-// Matches with "/api/user/:id"
+  .get(controller.findOne)
+
 router.route("/:id")
   .get(controller.findById)
   .put(controller.update)

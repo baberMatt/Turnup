@@ -1,14 +1,14 @@
 import React from "react";
 import { Button } from 'reactstrap';
 import "./style.css"
-import Signup from "../signup"
+import Signup from "../signup/signup"
 
 // import UserContext from "../../utils/userContext";
 
 function Login(props) {
 
   return (
-    <div id="login d-flex flex-row no-wrap">
+    <div id="login" className=" d-flex flex-row no-wrap">
       <table>
         <tr>
           <td><input size="3" className="input" onChange={event => props.setUserName(event.target.value)}></input></td>

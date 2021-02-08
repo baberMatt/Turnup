@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Turnupicon from '../../assets/turnupIcon.png'
 import "./style.css"
-import Signup from "../signup";
+
 import Login from "../Login"
 import App from "../../App.js"
 
@@ -19,7 +19,7 @@ function Nav(props) {
 
     return (
         <div id="nav">
-            <Row className="navRow d-flex justify-content-center">
+            <Row noGutters className="navRow d-flex justify-content-center">
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
                     <a href="/browse" className="m-auto">Browse</a>
                 </Col>
@@ -35,7 +35,7 @@ function Nav(props) {
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
                     <a href="#" className="m-auto">About Us</a>
                 </Col>
-                <Col lg={3} className="loginCol">
+                <Col lg={2} className=" loginCol p-0">
                     <Login
                         setUserName={props.setUserName}
                         setPassword={props.setPassword}

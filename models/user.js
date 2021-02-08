@@ -9,7 +9,12 @@ const userSchema = new Schema({
   about: { type: String, required: false },
   email: { type: String, required: false },
   islogged: { type: Boolean, required: false },
-  attending: Array,
+  attending: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event"
+    },
+  ],
   hosting: Array,
   date: { type: Date, default: Date.now }
 });

@@ -1,7 +1,9 @@
 #nav {
-    width: 100vw;
+    width: 100%;
     height: 6vh;
-    background: -webkit-linear-gradient(left, rgba(32,104,20,1) 0%,rgba(125,211,55,1) 25%,rgba(125,211,55,1) 50%,rgba(125,211,55,1) 75%,rgba(32,104,20,1) 100%); /* Chrome10-25,Safari5.1-6 */}
+    background: -webkit-linear-gradient(left, rgba(32,104,20,1) 0%,rgba(125,211,55,1) 25%,rgba(125,211,55,1) 50%,rgba(125,211,55,1) 75%,rgba(32,104,20,1) 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
 
 #icon {
     width: auto;
@@ -10,6 +12,7 @@
 
 .navRow{
     height: 6vh;
+    width: 100%;
     position: relative;
 }
 
