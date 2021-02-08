@@ -1,0 +1,34 @@
+{
+    "ramen" : {
+        "eventName": "Ramen by Alex Hrvatin",
+        "briefDetails": "Handmade Noodles, Carefully Crafted Broth, Local Ingredients",
+        "details": "Come on down to the Fluffy Duck Cafe and get yourself a bowl of ramen by Alex. Noodles, hand made in house here, broth carefully simmered for hours, and garnishes of local meats and veggies all prepared fresh from the farmer's market.",
+        "eventType": "Pop Up",
+        "category": { "first": "Food/Ramen" },
+        "location": "10001 Chester Ave, Cleveland, OH 44106"
+      },
+      "pizza" : {
+        "eventName": "Bocce Boys & Sons Pizza",
+        "briefDetails": "Slinging pies straight outta Czechosloboccia",
+        "details": "We're making pies right out of my kitchen here at the Franklin Castle. Order through instagram (link attached) and pick up when we say",
+        "eventType": "Pop Up",
+        "category": { "first": "Food/Pizza" },
+        "location": "4308 Franklin Blvd, Cleveland, OH 44113"
+      },
+      "barbecue" : {
+        "eventName": "North Coast Que",
+        "briefDetails": "Real pit barbecue here on the shores of Lake Erie",
+        "details": "We smoke it all! We got brisket, shoulders, hams, bacon, birds,you name it. Stop on by and grab a pile of your new favorite que. Seasonal rotating sides",
+        "eventType": "Pop Up",
+        "category": { "first": "Food/Barbecue" },
+        "location": "6030 Middle Ridge Rd, Madison, OH 44057"
+      },
+      "witch" : {
+        "eventName": "Sugar + Smoke Healing",
+        "briefDetails": "For all your witchy needs...",
+        "details": "Herbal rituals, soy candles, handcrafted yeas, oils + salts, reiki, tarot readings and all other things witchy",
+        "eventType": "Pop Up",
+        "category": { "first": "Maker/Apothecary" },
+        "location": "3441 Tuttle Rd, Shaker Heights, OH 44122"
+      }
+}

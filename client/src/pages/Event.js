@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/api/API";
 // import { Link } from "react-router-dom";
 import Login from "../components/Login";
-import Signup from "../components/signup";
+
 // import API from "../utils/api/API";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'

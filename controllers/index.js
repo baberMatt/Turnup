@@ -5,20 +5,23 @@ module.exports =
 //users
 {
     findAll: function (req, res) {
+        console.log(req)
         db.User
-            .find(req.query)
-            .sort({ date: -1 })
+            .find()
+            .populate("events")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findOne: function (req, res){
+        console.log(req.username)
         db.User
-        .findOne({ username: req.username })
+        .findOne({ Username: req.username })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
         db.User
+            .populate("events")
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

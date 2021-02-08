@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/api/API";
 // import { Link } from "react-router-dom";
 import Login from "../components/Login"
-import Signup from "../components/signup"
 import SearchQuick from "../components/SearchQuick/searchQuick.js"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -16,22 +15,11 @@ import '../App.css';
 
 
 
-function Landing() {
-  const [email, setEmail] = useState("email");
+function Landing(props) {
+  
 
   
-  // function handleFormSubmit(event) {
-  //   // event.preventDefault();
-  //   if (userName && email && password) {
-  //     API.saveUser({
-  //       username: userName,
-  //       email: email,
-  //       password: password
-  //     })
-  //       .then(res => console.log("succefuls Post"))
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  
 
   
 
@@ -52,14 +40,10 @@ function Landing() {
   return (
 
     <div id="landingPage">
-      {/* <Signup 
-       setUserName={setUserName}
-       setEmail={setEmail}
-       setPassword={setPassword}
-       handleSignIn={handleSignIn}
-       handleFormSubmit={handleFormSubmit}
-      /> */}
-      <Jumbotron />
+      
+      <Jumbotron 
+      toggle={props.toggle}
+      />
       <Container fluid className="p-0" id="landingContent" >
 
         <Row id="landing1" className="d-flex pt-5 justify-content-center">

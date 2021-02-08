@@ -42,7 +42,7 @@ function Jumbotron(props) {
                         <hr className="jumboHR"></hr>
                         <br></br>
                         <h4>Sign up today and see what's poppin'</h4>
-                        <button className="btn btn-success signUp">Sing Up!</button>
+                        <button onClick={props.toggle} className="btn btn-success signUp">Sing Up!</button>
                     </Col>
                     <Col lg={5}>
                         
