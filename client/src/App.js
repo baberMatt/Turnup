@@ -27,6 +27,7 @@ function App() {
 
   function handleSignIn() {
     if (userName && password) {
+      // passport authenticate
       API.signIn({
         username: userName,
         password: password
