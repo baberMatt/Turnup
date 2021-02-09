@@ -14,8 +14,8 @@ import 'react-calendar/dist/Calendar.css';
 
 
 function User(props) {
-
-
+    const [aboutMeUpdate, setAboutMeUpdate] = useState(props.user.about)
+    const [editAbout, setEditAbout] = useState(false)
     const [attendingEvents, setAttendingEvents] = useState("")
     let { Username } = useParams();
     console.log(Username)
@@ -33,6 +33,21 @@ function User(props) {
     // }, [Username])
 
     // console.log(user)
+    function editAboutMe() {
+        setEditAbout(true);
+    }
+
+    function handleAboutChange(event) {
+        setAboutMeUpdate(event.target.value)
+    }
+
+   
+    function updateAbout() {
+        API.updateUser(props.user._id, {about: aboutMeUpdate})
+        .catch(err => console.log(err));
+        setEditAbout(false);
+    }
+
 
     return (
         <div id="userPage" className="d-flex justify-content-center">
@@ -47,32 +62,33 @@ function User(props) {
                         <div className="Row d-flex justify-content">
                             <div className="col-md-12 d-flex justify-content-center">
                                 <div>
-                                    <h3 className="d-inline-block">{props.user.Username}</h3>{props.user.islogged ? <button id="logOutBtn" className="btn ml-auto">Log Out</button> : ""}
+                                    <h3 className="d-inline-block">{props.user.Username}</h3>{props.user.islogged ? <button id="logOutBtn" className="btn">Log Out</button> : ""}
                                     <h6 className="mt-2">{props.user.firstName} {props.user.lastName}</h6>
-                                    <h6>ABOUT ME</h6>
-                                    <p>{props.user.about}</p>
+                                    <h6 className="mt-4">ABOUT ME</h6>{props.user.islogged ? <button id="logOutBtn" onClick={editAboutMe} className="btn">Edit About Me</button> : ""}
+                                    {editAbout ? <textarea type="text" value={aboutMeUpdate} onChange={handleAboutChange} rows="5" cols="80">{props.user.about}</textarea> : <p>{props.user.about}</p>}
+                                    {editAbout ? <button className="btn" onClick={updateAbout}>Update</button> : "" }
                                 </div>
                             </div>
                         </div>
                     </Col>
                 </Row>
                 <Row className="Row contentBox d-flex justify-content-center mt-5" >
-                    <Col md={10} className="d-flex flex-column align-items-center">
-                        <h3 className="mt-3">Pop Ups I'm Hosting</h3>
-                        <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum neque egestas congue quisque egestas diam in arcu. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Id volutpat lacus laoreet non curabitur gravida arcu ac tortor. Lobortis feugiat vivamus at augue eget arcu dictum varius. Quis commodo odio aenean sed adipiscing diam donec adipiscing tristique. Imperdiet dui accumsan sit amet nulla facilisi morbi. Ipsum consequat nisl vel pretium lectus quam. Morbi tristique senectus et netus et malesuada fames ac. Nam aliquam sem et tortor consequat id porta nibh.</p>
-                        </div>
+                    <Col md={10} id="hostingCol" className="d-flex justify-content-center my-3">
+                        <h3 className="d-inline-block">Pop Ups I'm Hosting</h3>{props.user.islogged ? <button id="hostBtn" className="btn d-flex align-self-end">Host an Event</button> : ""}
+                        {/* <div className="m-auto"> */}
+                            {/* {props.user.attending.length ? "" : <h6>I'm not currently hosting any events</h6>} */}
+                        {/* </div> */}
                     </Col>
                 </Row>
 
                 <Row className="contentBox my-5 d-flex justify-content-around">
-                    <Col md={4} className="d-flex flex-column justify-content-center">
+                    <Col md={4} className="d-flex flex-column justify-content-center my-3">
                         <h3 className="text-center">CALENDER</h3>
                         <div id="calendar">
                             <Calendar></Calendar>
                         </div>
                     </Col>
-                    <Col md={4}>
+                    <Col md={4} className="my-3">
                         <h3>EVENTS ATTENDING</h3>
                         <div>
                             <ul>

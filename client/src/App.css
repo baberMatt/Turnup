@@ -115,6 +115,15 @@ html {
   margin-left: 60% !important;
 }
 
+#hostingCol{
+  position: relative;
+}
+
+#hostBtn {
+  position: absolute;
+  left: 94%;
+}
+
 #profileImage {
   width: 20rem;
   height: 20rem;
