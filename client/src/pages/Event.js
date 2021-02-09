@@ -33,18 +33,27 @@ function Event() {
                 <div className="row my-3 d-flex justify-content-around">
                     <div className="col-md-3 text-center">
                         <div className="border d-flex flex-column">
-                            <p>Event Name </p>
-                            <p>Event Name </p>
-                            <p>Even Name </p>
                             <p>Event Name</p>
+                            
                         </div>
                     </div>
-                    <div className="col-md-7 text-center">
+                    <div className="col-md-5 text-center">
                         <div className="border">
                             <p>Hours of Operation</p>
-                            <p>Hours of Operation</p>
-                            <p>Hours of Operation</p>
-                            <p>Hours of Operation</p>
+
+                    <div className="col-md-7 text-center">
+                        <div className="border">
+                            <p>Long Description</p>
+                            
+                        </div>
+                    <div className="col-md-12 text center">
+                        <div className="border">
+                            <p>Menu Items</p>
+
+                        </div>
+
+                    </div>
+                        </div>                         
                        </div>
                     </div>
                 </div>
