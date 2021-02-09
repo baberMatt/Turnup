@@ -8,7 +8,6 @@ module.exports =
         console.log(req)
         db.User
             .find()
-            .populate("events")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
