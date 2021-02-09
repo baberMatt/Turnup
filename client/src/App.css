@@ -1,38 +1,171 @@
-.App {
-  text-align: center;
+/* -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc; */
+
+
+/* Template/BG */
+html {
+  font-size: 16px;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+
+
+
+.btn { 
+  background-color: #7dd337 !important;
+  border-color: #061c03;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Landing */
+
+#langingPage {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+#landingContent {
+  position: relative;
+  margin-top: 76vh;
+  color: #061c03;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+
+}
+
+#landing1 {
+  width: 100vw;
+  height: 35vh;
+  background-image: url("./assets/turnupBGxshort.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+#landing1 .header {
+  margin-left: -5rem;
+}
+
+#landing1 .bodyText {
+  margin-left: 5rem;
+}
+
+#landing3 .header {
+  margin-right: -5rem;
+}
+
+#landing3 .bodyText {
+  margin-right: 5rem;
+}
+
+#landing2 {
+  width: 100vw;
+  height: 35vh;
+  background-image: url("./assets/pancakes.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#landing3 {
+  width: 100vw;
+  height: 35vh;
+  background-image: url("./assets/turnupBGxshort.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* User */
+#userPage {
+  background-image: url("./assets/turnupBGlong.png");
+}
+
+#userPage p {
+  color: #061c03;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+}
+
+.contentBox {
+  margin-left: 6%;
+  margin-right: 6%;
+  background-color: #7dd337;
+  border-color: #061c03;
+  color: #061c03;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5mm;
+  -moz-box-shadow:    3px 3px 5px 6px rgb(65, 62, 62);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(68, 65, 65);
+  box-shadow:         3px 3px 5px 6px rgb(65, 64, 64);
+}
+
+#logOutBtn {
+  margin-left: 60% !important;
+}
+
+#profileImage {
+  width: 20rem;
+  height: 20rem;
+}
+
+#calendar {
+  margin: 2rem;
+}
+
+/* Event */
+#event {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  z-index: 1;
+
+}
+
+
+/* Browse */
+ #browsePage {
+ background-image: url("./assets/turnupBGlong.png")
+ 
+}
+
+.netf {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0 55px;
 }
 
-.App-link {
-  color: #61dafb;
+.item {
+  
+  flex: 0 0 19.7%;
+  text-align: center;
+  margin: 0 2px;
+  transition: transform 300ms ease 100ms;
+}
+.netf:hover .item {
+  transform: translateX(-25%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item:hover ~ .item {
+  transform: translateX(25%);
+}
+
+
+.item:hover {
+  transform: scale(1.5) !important;
+}
+
+
+.menueItem:hover{
+  transform: scale(1.03) !important
 }

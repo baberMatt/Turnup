@@ -8,21 +8,33 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
+    "seed1": "node seeders/seedUsers.js",
+    "seed2": "node seeders/seedEvents.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
+    "seedgoose": "seedgoose",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^4.1.0",
+    "concurrently": "^5.3.0",
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
+    "cookie-parser": "^1.4.5",
     "express": "^4.16.3",
+    "express-session": "^1.17.1",
+    "history": "^5.0.0",
+    "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
-    "if-env": "^1.0.4"
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react-bootstrap": "^1.4.3",
+    "react-calendar": "^3.3.1",
+    "seedgoose": "^2.0.2"
   }
 }
