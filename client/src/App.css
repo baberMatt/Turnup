@@ -137,4 +137,35 @@ html {
 /* Browse */
  #browsePage {
  background-image: url("./assets/turnupBGlong.png")
+ 
+}
+
+.netf {
+  display: flex;
+  padding: 0 55px;
+}
+
+.item {
+  
+  flex: 0 0 19.7%;
+  text-align: center;
+  margin: 0 2px;
+  transition: transform 300ms ease 100ms;
+}
+.netf:hover .item {
+  transform: translateX(-25%);
+}
+
+.item:hover ~ .item {
+  transform: translateX(25%);
+}
+
+
+.item:hover {
+  transform: scale(1.5) !important;
+}
+
+
+.menueItem:hover{
+  transform: scale(1.03) !important
 }

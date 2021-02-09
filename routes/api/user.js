@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { response } = require("express");
-const controller = require("../../controllers/");
+const controller = require("../../controllers/user.js");
 const passport = require("passport")
 
 // Matches with "/api/user"
