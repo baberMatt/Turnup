@@ -39,7 +39,8 @@ export default {
     return axios.post("/api/event/", userData);
   },
   getEventname: function (eventNameData) {
+    console.log(eventNameData)
     // var userPublic = { Username : usernameData.Username}
     return axios.post("/api/event/one", eventNameData);
-  },
+  }
 };

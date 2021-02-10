@@ -34,6 +34,8 @@ function App() {
   const [modalSignUp, setModalSignUp] = useState(false);
   const [modalHost, setModalHost] = useState(false);
 
+  const [eventInFocus, setEventInFocus] = useState({});
+
   const toggleSignUp = () => setModalSignUp(!modalSignUp);
   const toggleHost = () => setModalHost(!modalHost);
 
@@ -77,8 +79,11 @@ function App() {
     // event.preventDefault();
 
     if (eventName && briefDetails && details && eventType && mainCat && location) {
+
+      let eventString = eventName.replace(/\s/g, '').toLowerCase();
       API.saveEvent({
         eventName: eventName,
+        eventString: eventString,
         host: user._id,
         briefDetails: briefDetails,
         details: details,
@@ -140,8 +145,12 @@ function App() {
                 toggleSignUp={toggleSignUp}
               />
             </Route>
-            <Route exact path="/event">
-              <Event />
+            <Route exact path="/event/:currentEvent">
+              <Event 
+               user={user}
+               eventInFocus={eventInFocus}
+               setEventInFocus={setEventInFocus}
+              />
             </Route>
             <Route exact path="/user/:Username">
               <User

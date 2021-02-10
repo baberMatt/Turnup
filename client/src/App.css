@@ -6,7 +6,7 @@
 /* Template/BG */
 html {
   font-size: 16px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 
@@ -170,11 +170,68 @@ html {
 
 /* Event */
 #event {
-  position: absolute;
-  top: 20%;
-  width: 100%;
-  z-index: 1;
+  background-image: url("./assets/turnupBGlong.png");
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+}
 
+#event p {
+  color: #061c03;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+}
+
+
+.eventContent{
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+.eventBox {
+  background-color: #7dd337;
+  border-color: #061c03;
+  color: #061c03;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+  border-style: solid;
+  border-width: 1px;
+  border-bottom-left-radius: 5mm;
+  border-bottom-right-radius: 5mm;
+  -moz-box-shadow:    inset 0px 0px 24px 12px rgba(32,104,20,1);
+  -webkit-box-shadow: inset 0px 0px 24px 12px rgba(32,104,20,1);
+  box-shadow:         inset 0px 0px 24px 12px rgba(32,104,20,1);
+}
+
+#bannerCol{
+  position: relative;
+  border-color: #061c03;
+  border-right-style: solid;
+  border-width: 1px;
+  border-top-left-radius: 5mm;
+  border-top-right-radius: 5mm;
+}
+
+#bannerImage{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  object-fit: cover;
+  border-color: #061c03;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-width: 1px;
+  border-top-left-radius: 5mm;
+  border-top-right-radius: 5mm;
+  -webkit-mask-image: -webkit-linear-gradient(-135deg, rgba(0,0,0,.3) 0%,rgba(0,0,0,.5) 49%,rgba(0,0,0,0.75) 50%,rgba(0,0,0,1) 80%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
+#bannerText{
+  position: absolute;
+  z-index: 2;
+  left: 53%;
+  color: white;
+  
 }
 
 
