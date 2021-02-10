@@ -1,0 +1,26 @@
+.shadowBox {
+    width: 100%;
+    border-radius: 5mm;
+    -moz-box-shadow:    3px 3px 5px 6px rgb(65, 62, 62);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(68, 65, 65);
+  box-shadow:         3px 3px 5px 6px rgb(65, 64, 64);
+}
+
+.hostedRoot {
+    width: 100%;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+.hostedBox {
+ 
+  background-color: rgba(32,104,20,1);
+  border-color: #061c03;
+  color: #061c03;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5mm;
+  
+}

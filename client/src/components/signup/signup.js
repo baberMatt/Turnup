@@ -12,9 +12,9 @@ function Signup(props) {
     className
   } = props;
 
-  function formSubmit() {
-    props.handleFormSubmit();
-    props.toggle();
+  function signUpFormSubmit() {
+    props.handleSingUpSubmit();
+    props.toggleSignUp();
   }
 
 
@@ -22,8 +22,8 @@ function Signup(props) {
 
     <div>
 
-      <Modal isOpen={props.modal} toggle={props.toggle} className={className}>
-        <ModalHeader toggle={props.toggle}></ModalHeader>
+      <Modal isOpen={props.modalSignUp} toggle={props.toggleSignUp} className={className}>
+        <ModalHeader toggle={props.toggleSignUp}></ModalHeader>
         <ModalBody>
           <div class="">
             <input onChange={event => props.setUserName(event.target.value)} type="text" username="username" id="username" placeholder="Your User Name" />
@@ -43,8 +43,8 @@ function Signup(props) {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={formSubmit}>Submit</Button>{' '}
-          <Button color="secondary" onClick={props.toggle}>Cancel</Button>
+          <Button color="primary" onClick={signUpFormSubmit}>Submit</Button>{' '}
+          <Button color="secondary" onClick={props.toggleSignUp}>Cancel</Button>
         </ModalFooter>
       </Modal>
     </div >

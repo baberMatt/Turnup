@@ -3,6 +3,12 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
   eventName: { type: String, required: true },
+  host: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
   briefDetails: { type: String, required: true },
   details: { type: String, required: true },
   bannerImage: { type: String, required: false },

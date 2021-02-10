@@ -14,9 +14,31 @@ html {
 
 
 
-.btn { 
-  background-color: #7dd337 !important;
+.btn1 { 
+  background-color:  rgba(32,104,20,1) !important;
   border-color: #061c03;
+  color: white;
+  -moz-box-shadow:    inset 0px 0px 12px 2px rgb(7, 34, 2);
+  -webkit-box-shadow: inset 0px 0px 12px 2px rgb(7, 34, 2);
+  box-shadow:         inset 0px 0px 12px 2px rgb(7, 34, 2);
+}
+
+.btn2 { 
+  background-color:  #7dd337 !important;
+  border-color: #061c03;
+  color:rgb(7, 34, 2);
+  -moz-box-shadow:    inset 0px 0px 12px 2px rgba(32,104,20,1);
+  -webkit-box-shadow: inset 0px 0px 12px 2px rgba(32,104,20,1);
+  box-shadow:         inset 0px 0px 12px 2px rgba(32,104,20,1);
+}
+
+.btn3 { 
+  background-color:  #dbc1ba !important;
+  border-color:#b361a9;
+  color:rgb(7, 34, 2);
+  -moz-box-shadow:    inset 0px 0px 12px 2px rgba(202,144,178,1);
+  -webkit-box-shadow: inset 0px 0px 12px 2px rgba(202,144,178,1);
+  box-shadow:         inset 0px 0px 12px 2px rgba(202,144,178,1);
 }
 
 /* Landing */
@@ -96,8 +118,8 @@ html {
 }
 
 .contentBox {
-  margin-left: 6%;
-  margin-right: 6%;
+  /* margin-left: 6%;
+  margin-right: 6%; */
   background-color: #7dd337;
   border-color: #061c03;
   color: #061c03;
@@ -106,13 +128,26 @@ html {
   border-style: solid;
   border-width: 1px;
   border-radius: 5mm;
-  -moz-box-shadow:    3px 3px 5px 6px rgb(65, 62, 62);
-  -webkit-box-shadow: 3px 3px 5px 6px rgb(68, 65, 65);
-  box-shadow:         3px 3px 5px 6px rgb(65, 64, 64);
+  -moz-box-shadow:    inset 0px 0px 24px 12px rgba(32,104,20,1);
+  -webkit-box-shadow: inset 0px 0px 24px 12px rgba(32,104,20,1);
+  box-shadow:         inset 0px 0px 24px 12px rgba(32,104,20,1);
+  
+
 }
 
-#logOutBtn {
-  margin-left: 60% !important;
+
+
+.shadowUser {
+  margin-right: 6%;
+  margin-left: 6%;
+  border-radius: 5mm;
+  -moz-box-shadow:    3px 3px 5px 6px rgb(65, 62, 62);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(68, 65, 65);
+  box-shadow:         3px 3px 5px 6px rgb(65, 64, 64); 
+}
+.editButtons {
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 #hostingCol{
@@ -121,7 +156,7 @@ html {
 
 #hostBtn {
   position: absolute;
-  left: 94%;
+  left: 86%;
 }
 
 #profileImage {

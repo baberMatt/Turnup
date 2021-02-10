@@ -11,9 +11,9 @@ export default {
     return axios.get("/api/user/" + id);
   },
   // Gets User by user name if exists
-  getUsername: function (query) {
-    console.log(query)
-    return axios.get("/api/user/", query);
+  getUsername: function (usernameData) {
+    var userPublic = { Username : usernameData.Username}
+    return axios.post("/api/user/one", userPublic);
   },
   // Gets the User with the given id
   signIn: function (userData) {
@@ -33,5 +33,13 @@ export default {
   },
   getEvents: function(){
     return axios.get("/api/event")
-  }
+  },
+  saveEvent: function (userData) {
+    console.log(userData);
+    return axios.post("/api/event/", userData);
+  },
+  getEventname: function (eventNameData) {
+    // var userPublic = { Username : usernameData.Username}
+    return axios.post("/api/event/one", eventNameData);
+  },
 };
