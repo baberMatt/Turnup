@@ -42,7 +42,7 @@ function Landing(props) {
     <div id="landingPage">
       
       <Jumbotron 
-      toggle={props.toggle}
+      toggleSignUp={props.toggleSignUp}
       />
       <Container fluid className="p-0" id="landingContent" >
 

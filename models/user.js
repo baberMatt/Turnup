@@ -13,9 +13,14 @@ const userSchema = new Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event"
-    },
+    }
   ],
-  hosting: Array,
+  hosting: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event"
+    }
+  ],
   date: { type: Date, default: Date.now }
 });
 

@@ -6,21 +6,24 @@ module.exports =
 {
     
     findAll: function (req, res) {
+        
         db.User
-            .find()
+            .find(req)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findOne: function (req, res){
-        console.log(req.username)
+        console.log(req.body)
         db.User
-        .findOne({ Username: req.username })
+        .findOne({ Username: req.body.Username })
+        .populate("hosting")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
         db.User
             .findById(req.params.id)
+            .populate("hosting")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
