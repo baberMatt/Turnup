@@ -258,18 +258,14 @@ html {
 
 .item {
   
-  flex: 0 0 19.7%;
+  
   text-align: center;
   margin: 0 2px;
   transition: transform 300ms ease 100ms;
 }
-.netf:hover .item {
-  transform: translateX(-25%);
-}
 
-.item:hover ~ .item {
-  transform: translateX(25%);
-}
+
+
 
 
 .item:hover {
@@ -277,6 +273,3 @@ html {
 }
 
 
-.menueItem:hover{
-  transform: scale(1.03) !important
-}

@@ -12,18 +12,19 @@ import BrowseCard from '../components/Browsecard/browseCard'
 
 
 function Browse(props) {
-    const [browse, setBrowse] = useState({});
-    
-    
-    
-    
-    useEffect(()=>{
-        API.getEvents()
-        .then(res=>{
-            setBrowse(res.data)
+    const [browse, setBrowse] = useState([]);
+    const [sortedFood, setSortedFood] = useState([]);
+    const [sortedMaker, setSortedMaker] = useState([]);
 
-        })
-    },[browse])
+
+    useEffect(() => {
+        API.getEvents()
+            .then(res => {
+                setBrowse(res.data)
+
+            })
+    }, [browse])
+
 
     return (
         <div id="browsePage">
@@ -43,20 +44,19 @@ function Browse(props) {
                         <h2 >Food</h2>
                     </div>
                 </Row>
+
                 <div className="netf">
-                    
-                    {browse.length ? (
-                        browse.map(item=>(
-                            <BrowseCard 
-                            cardTitle={item.eventName}
-                            cardText={item.briefDetails}
-                            />
-                            
-                            
-                        ))
-                    ) : (<h3>No events for this category</h3>)
-                    }
-                   
+
+
+                    {browse.map(item =>
+                        item.category.first === "Food" ? (
+                            <BrowseCard
+                                cardTitle={item.eventName}
+                                cardText={item.briefDetails} />
+                        ) : ("")
+                    )}
+
+
                 </div>
 
                 <Row>
@@ -65,34 +65,17 @@ function Browse(props) {
                     </div>
                 </Row>
                 <Row style={{ bottom: "5rem" }}>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
+                    {browse.map(item =>
+                        item.category.first === "Maker" ? (
+                            <BrowseCard
+                                cardTitle={item.eventName}
+                                cardText={item.briefDetails} />
+                        ) : ("")
+                    )}
                 </Row>
 
 
-               
+
 
 
             </Container>
