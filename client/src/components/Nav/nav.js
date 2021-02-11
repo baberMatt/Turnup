@@ -24,7 +24,7 @@ function Nav(props) {
                     <a href="/browse" className="m-auto">Browse</a>
                 </Col>
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    <a href="#" className="m-auto">Home</a>
+                    <a href="/" className="m-auto">Home</a>
                 </Col>
                 
                     <img id="icon" className="img-fluid " src={Turnupicon} />

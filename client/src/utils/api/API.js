@@ -40,7 +40,7 @@ export default {
   },
   getEventname: function (eventNameData) {
     console.log(eventNameData)
-    // var userPublic = { Username : usernameData.Username}
-    return axios.post("/api/event/one", eventNameData);
+    var eventRequest = { eventString : eventNameData.eventString}
+    return axios.post("/api/event/one", eventRequest);
   }
 };

@@ -19,7 +19,7 @@ module.exports =
     findOne: function (req, res){
         console.log(req.body)
         db.Event
-        .findOne({ eventName: req.body.eventName })
+        .findOne({ eventString: req.body.eventString })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
