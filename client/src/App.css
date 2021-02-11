@@ -181,6 +181,16 @@ html {
   font-weight: 400;
 }
 
+#eventNameInput {
+  font-size: 72px;
+  background-color: rgb(0, 0, 0, 0.3);
+  color: #061c03;
+}
+
+#briefDetailsInput {
+  background-color: rgb(0, 0, 0, 0.3);
+  color: #061c03;
+}
 
 .eventContent{
   margin-left: 8%;
@@ -229,8 +239,8 @@ html {
 #bannerText{
   position: absolute;
   z-index: 2;
-  left: 53%;
-  color: white;
+  left: 30%;
+  color: #061c03;
   
 }
 

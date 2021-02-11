@@ -6,7 +6,7 @@ import "./style.css"
 
 
 function Menuitem(props) {
-    console.log(props.foodPic)
+    
     return (
         <div className="">
             <Row>
