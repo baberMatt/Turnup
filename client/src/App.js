@@ -100,7 +100,8 @@ function App() {
     }
     API.getEventname({ eventName: eventName })
       .then(res => {
-        API.updateUser(user._id, {hosting: res.data._id})
+        
+        API.updateUser(user._id, {hosting: [...res.data.hosting, res.data._id]})
       })
      
         

@@ -45,8 +45,8 @@ function Event(props) {
                         <Col md={12} id="bannerCol" className="d-flex p-0 justify-content-center">
                             <img id="bannerImage" src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2016/10/06121429/twenty20_5ac8d87c-3c0e-4cd3-a827-eccc2f30c894.jpg" />
                             <div id="bannerText" className="text-right" >
-                                {/* <h1 className="display-1">{props.eventInFocus.eventName}</h1>
-                                <h5>{props.eventInFocus.briefDetails}</h5> */}
+                                <h1 className="display-1">{props.eventInFocus.eventName}</h1>
+                                <h5>{props.eventInFocus.briefDetails}</h5>
                             </div>
                         </Col>
                     </Row>
@@ -61,11 +61,11 @@ function Event(props) {
                             <h6>day 3</h6>
                             <h6>day 4</h6>
                             <h3>Where its happening</h3>
-                            {/* <h6>{props.eventInFocus.location}</h6> */}
+                            <h6>{props.eventInFocus.location}</h6>
                         </Col>
                         <Col md={7} className="my-3">
                             <h3>Details</h3>
-                            {/* <p>{props.eventInFocus.details}</p> */}
+                            <p>{props.eventInFocus.details}</p>
                         </Col>
                     </Row>
                 </div>
