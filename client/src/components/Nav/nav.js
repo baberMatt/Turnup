@@ -21,8 +21,9 @@ function Nav(props) {
         <div id="nav">
             <Row noGutters className="navRow d-flex justify-content-center">
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    <a href="/browse" className="m-auto">Browse</a>
+                    {/* <a href="#" className="m-auto">Search</a> */}
                 </Col>
+
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
                     <a href="/" className="m-auto">Home</a>
                 </Col>
@@ -30,10 +31,11 @@ function Nav(props) {
                 <img id="icon" className="img-fluid " src={Turnupicon} />
 
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    <a href="#" className="m-auto">Search</a>
+                    <a href="/browse" className="m-auto">Browse</a>
                 </Col>
+                
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    <a href="#" className="m-auto">About Us</a>
+                    {/* <a href="#" className="m-auto">About Us</a> */}
                 </Col>
                 <Col lg={2} className=" loginCol p-0">
                     {!props.isLogged ? "" : <a href={"/user/" + props.user.Username}><button className="btn btn1">Profile</button></a>}
