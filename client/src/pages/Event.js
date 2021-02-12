@@ -11,7 +11,8 @@ import Col from 'react-bootstrap/Col'
 import food1 from '../assets/food1.jpg'
 import food2 from '../assets/food2.jpg'
 import food3 from '../assets/pancakes.jpg'
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -23,10 +24,17 @@ function Event(props) {
     const [eventBriefDetailsUpdate, setEventBriefDetailsUpdate] = useState();
     const [eventLocationUpdate, setEventLocationUpdate] = useState();
     const [eventDetailsUpdate, setEventDetailsUpdate] = useState();
-    const [eventAuth, setEventAuth] = useState(false);
 
     let { currentEvent } = useParams();
     const history = useHistory();
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+
+    const [eventAuth, setEventAuth] = useState(false);
+
+    
+    
+
 
 
     useEffect(() => {
@@ -115,8 +123,23 @@ function Event(props) {
                         </Col>
                         <Col md={3} className="my-3 ">
                             <h3>When its happening</h3>
-                            <h6>day 1</h6>
-
+                            <div>
+                                <DatePicker
+                                    selected={startDate}
+                                    onChange={date => setStartDate(date)}
+                                    selectsStart
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                />
+                                <DatePicker
+                                    selected={endDate}
+                                    onChange={date => setEndDate(date)}
+                                    selectsEnd
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                    minDate={startDate}
+                                />
+                            </div>
                             <h6>day 2</h6>
                             <h6>day 3</h6>
                             <h6>day 4</h6>
