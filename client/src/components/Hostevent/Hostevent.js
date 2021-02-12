@@ -35,25 +35,25 @@ function Hostevent(props) {
 
         <div>
 
-            <Modal isOpen={props.modalHost} toggle={props.toggleHost} className={className}>
+            <Modal id="modalBackground" isOpen={props.modalHost} toggle={props.toggleHost} className={className}>
                 <ModalHeader toggle={props.toggleHost}></ModalHeader>
                 <ModalBody>
-                    <div class="d-inline-block">
-                        <input onChange={event => props.setEventName(event.target.value)} placeholder="Event Name" />
+                    <div className="d-inline-block">
+                        <input className="styleInput" onChange={event => props.setEventName(event.target.value)} placeholder="Event Name" />
                         <select onChange={event => props.setEventType(event.target.value)} placeholder="Event Type">
                             <option value="Select One">Select One</option>
                             <option value="Pop Up">Pop Up</option>
                             <option value="Ghost Kitchen">Ghost Kitchen</option>
                         </select>
                     </div>
-                    <div class="">
+                    <div className="">
                         <textarea onChange={event => props.setBriefDetails(event.target.value)} rows="1" cols="75">Brief description here</textarea>
                     </div>
-                    <div class="">
+                    <div className="">
                         <textarea onChange={event => props.setDetails(event.target.value)} rows="4" cols="75">Brief description here</textarea>
                         
                     </div>
-                    <div class="">
+                    <div className="">
                         <select onChange={event => props.setMainCat(event.target.value)} placeholder="Main Category">
                             <option value="Select One">Select One</option>
                             <option value="Food">Food</option>
@@ -62,13 +62,13 @@ function Hostevent(props) {
                         <input onChange={event => props.setSubCat1(event.target.value)} placeholder="Sub Category" />
                         <input onChange={event => props.setSubCat2(event.target.value)} placeholder="Sub Category" />
                     </div>
-                    <div class="">
+                    <div className="">
                         <input onChange={event => props.setLocation(event.target.value)} placeholder="Location" />
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={hostFormSubmit}>Submit</Button>{' '}
-                    <Button color="secondary" onClick={props.toggleHost}>Cancel</Button>
+                    <Button className="hostingButtons" color="primary" onClick={hostFormSubmit}>Submit</Button>{' '}
+                    <Button className="hostingButtons"  color="secondary" onClick={props.toggleHost}>Cancel</Button>
                 </ModalFooter>
             </Modal>
         </div >
