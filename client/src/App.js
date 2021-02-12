@@ -122,7 +122,7 @@ function App() {
         eventName: eventName,
         eventString: eventString,
         hosts: user._id,
-        attendees: user._id,
+        attendees: {guest: user._id},
         briefDetails: briefDetails,
         details: details,
         eventType: eventType,
@@ -143,8 +143,11 @@ function App() {
     API.getEventstring({ eventString: eventString })
       .then(res => {
           API.updateUser(user._id, { $push: { hosting: res.data._id } })
+          window.location.href = '/event/' + res.data.eventString;
       })
       .catch(err => console.log(err));
+    
+    
   };
   
 

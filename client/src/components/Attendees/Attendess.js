@@ -9,15 +9,15 @@ import Col from 'react-bootstrap/Col';
 
 
 
-function Attendees (props) {
+function Attendees(props) {
   const {
     buttonLabel,
     className
   } = props;
 
-  
 
 
+  console.log(props.eventInFocus.attendees)
   return (
 
     <div>
@@ -25,25 +25,36 @@ function Attendees (props) {
       <Modal isOpen={props.modalAttendees} toggle={props.toggleAttendees} className={className}>
         <ModalHeader toggle={props.toggleAttendees}></ModalHeader>
         <ModalBody>
-        <Container>
-                <Row>
-                    <Col md={12}>
-                        <h3>This is who is turning up for...</h3>
-                        <h1>{props.eventInFocus.eventName}</h1>
-                    </Col>
+          <Container>
+            <Row>
+              <Col md={12}>
+                <h3>This is who is turning up for...</h3>
+                <h1>{props.eventInFocus.eventName}</h1>
+              </Col>
 
-                </Row>
-                <Row>
-                    <Col md={8}>
-                        {props.eventInFocus.attendees.map(item =>
-                        
-                            <Eventguest
-                                Username={item.Username}
-                            />
-                        )}
-                    </Col>
-                </Row>
-            </Container>
+            </Row>
+            <Row>
+              <Col md={8}>
+
+                {props.eventInFocus.attendees.map(item =>
+                   item.guest.hosting.includes(props.eventInFocus._id) ? (
+                    <Eventguest
+                      eventID={props.eventInFocus._id}
+                      host={"host"}
+                      Username={item.guest.Username}
+                      attending={item.guest.attending}
+                    />
+                  ) : (
+                      <Eventguest
+                        eventID={props.eventInFocus._id}
+                        dates={item.dates}
+                        Username={item.guest.Username}
+                        attending={item.guest.attending}
+                      />)
+                )}
+              </Col>
+            </Row>
+          </Container>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" >Submit</Button>{' '}

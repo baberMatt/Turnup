@@ -244,11 +244,21 @@ html {
   
 }
 
+.checkedBtn {
+  background-color:  #dbc1ba !important ;
+  border-color:#b361a9;
+  color:rgb(7, 34, 2);
+  -moz-box-shadow:    inset 0px 0px 12px 2px rgba(202,144,178,1);
+  -webkit-box-shadow: inset 0px 0px 12px 2px rgba(202,144,178,1);
+  box-shadow:         inset 0px 0px 12px 2px rgba(202,144,178,1);
+}
 
+.eventBtn .btn {
+  width: 80%;
+}
 /* Browse */
  #browsePage {
  background-image: url("./assets/turnupBGlong.png")
- 
 }
 
 .netf {

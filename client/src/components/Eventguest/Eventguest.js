@@ -6,6 +6,8 @@ import "./style.css"
 
 function Eventguest(props) {
 
+    console.log(props)
+
     return (
         <div className="my-5">
             <Row className="d-flex justify-content-center">
@@ -15,6 +17,16 @@ function Eventguest(props) {
 
                 <Col md={6} className="m-auto">
                     <a href={'/user/' + props.Username}><h2>{props.Username}</h2></a>
+                    {props.host 
+                        ? ( <h6>Hosting</h6> 
+                        ) : (
+                            (<h6>dates going...</h6> +
+                            props.dates.map(item => (
+                            <p>{item}</p>
+                            ))
+                            
+                        ))}
+
                 </Col>
             </Row>
 

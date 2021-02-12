@@ -10,11 +10,14 @@ const eventSchema = new Schema({
       ref: "User"
     }
   ],
-  attendees: [
+  attendees: [                      
     {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
+      guest: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+      },
+      dates: Array
+    }    
   ],
   briefDetails: { type: String, required: true },
   details: { type: String, required: true },
