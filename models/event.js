@@ -4,7 +4,13 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   eventName: { type: String, required: true },
   eventString: { type: String, required: true},
-  host: [
+  hosts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
+  attendees: [
     {
       type: Schema.Types.ObjectId,
       ref: "User"

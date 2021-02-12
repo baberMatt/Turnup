@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom"
 import API from "../utils/api/API.js";
 import Hostevent from "../components/Hostevent/Hostevent.js"
 import Hosted from "../components/Hosted/Hosted.js"
+import Attending from "../components/Attending/Attending.js"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,12 +17,12 @@ import 'react-calendar/dist/Calendar.css';
 
 
 function User(props) {
-    const [aboutMeUpdate, setAboutMeUpdate] = useState(props.user.about)
-    const [firstNameUpdate, setFirstNameUpdate] = useState(props.user.firstName)
-    const [lastNameUpdate, setLastNameUpdate] = useState(props.user.lastName)
-    const [editAbout, setEditAbout] = useState(false)
-    const [attendingEvents, setAttendingEvents] = useState("")
-
+    const [aboutMeUpdate, setAboutMeUpdate] = useState();
+    const [firstNameUpdate, setFirstNameUpdate] = useState();
+    const [lastNameUpdate, setLastNameUpdate] = useState();
+    const [editAbout, setEditAbout] = useState(false);
+    const [attendingEvents, setAttendingEvents] = useState("");
+    const [displayedUser, setDisplayedUser] = useState({ Username: "user", hosting: [], attending: [] });
 
 
     let { Username } = useParams();
@@ -30,16 +31,16 @@ function User(props) {
     useEffect(() => {
 
         API.getUsername({ Username: Username }).then(res => {
-            if (!res.data.islogged) {
-                props.setUser(res.data);
+                setDisplayedUser(res.data);
+                setAboutMeUpdate(displayedUser.about)
+                setFirstNameUpdate(displayedUser.firstName)
+                setLastNameUpdate(displayedUser.lastName)
                 console.log("effect rendered")
-                console.log("props are " + props.user.Username)
-            }
         })
 
     }, [Username])
 
-    // console.log(user)
+    
     function editAboutMe() {
         if ( !editAbout ) {
             setEditAbout(true);
@@ -49,11 +50,7 @@ function User(props) {
         }
     }
 
-    function handleLogOut() {
-        API.updateUser(props.user._id, { islogged: false })
-            .catch(err => console.log(err));
-        history.push("/")
-    }
+    
 
     function handleAboutChange(event) {
         setAboutMeUpdate(event.target.value)
@@ -95,18 +92,18 @@ function User(props) {
                         <div className="Row d-flex justify-content">
                             <div className="col-md-12 d-flex justify-content-center">
                                 <div>
-                                    <h3 className="">{props.user.Username}</h3>
-                                    {editAbout ? <input type="text" value={firstNameUpdate} onChange={handleFirstNameChange} placeholder={firstNameUpdate} /> : <h6 className="d-inline-block mt-2">{props.user.firstName}</h6>} {editAbout ? <input type="text" value={lastNameUpdate} onChange={handleLastNameChange} placeholder={lastNameUpdate} /> : <h6 className="d-inline-block mt-2"> {props.user.lastName}</h6>}
+                                    <h3 className="">{displayedUser.Username}</h3>
+                                    {editAbout ? <input type="text" value={firstNameUpdate} onChange={handleFirstNameChange} placeholder={firstNameUpdate} /> : <h6 className="d-inline-block mt-2">{displayedUser.firstName}</h6>} {editAbout ? <input type="text" value={lastNameUpdate} onChange={handleLastNameChange} placeholder={lastNameUpdate} /> : <h6 className="d-inline-block mt-2"> {displayedUser.lastName}</h6>}
                                     <h6 className="mt-4">ABOUT ME</h6>
-                                    {editAbout ? <textarea type="text" value={aboutMeUpdate} onChange={handleAboutChange} rows="5" cols="80">{props.user.about}</textarea> : <p>{props.user.about}</p>}
+                                    {editAbout ? <textarea type="text" value={aboutMeUpdate} onChange={handleAboutChange} rows="5" cols="80">{displayedUser.about}</textarea> : <p>{displayedUser.about}</p>}
                                 </div>
                             </div>
                         </div>
                     </Col>
                     <Col md={2} className="d-flex flex-column justify-content-between my-3">
-                    {props.user.islogged ? <button onClick={handleLogOut} className="btn btn1 editButtons">Log Out</button> : ""}
+                    
                     {editAbout ? <button  onClick={updateAbout} className="btn btn3 editButtons">Update</button> : ""}
-                    {props.user.islogged ? <button onClick={editAboutMe} className="btn btn1 editButtons">Edit About Me</button> : ""}
+                    {props.isLogged ? <button onClick={editAboutMe} className="btn btn1 editButtons">Edit About Me</button> : ""}
                     
                     </Col>
                     
@@ -115,13 +112,15 @@ function User(props) {
                 <div className="shadowUser">
                 <Row className="Row contentBox boxInner d-flex justify-content-center mt-5" >
                     <Col md={12} id="hostingCol" className="d-flex justify-content-center my-3">
-                        <h3 className="d-inline-block">Pop Ups I'm Hosting</h3>{props.user.islogged ? <button id="hostBtn" onClick={props.toggleHost} className="btn btn1 d-flex align-self-end">Host an Event</button> : ""}
+                        <h3 className="d-inline-block">Pop Ups I'm Hosting</h3>{props.isLogged ? <button id="hostBtn" onClick={props.toggleHost} className="btn btn1 d-flex align-self-end">Host an Event</button> : ""}
                     </Col>   
                 
-                        {props.user.hosting.length ? (
-                            props.user.hosting.map(item => (
+                        {displayedUser.hosting.length ? (
+                            displayedUser.hosting.map(item => (
                                 <Hosted
+                                    isLogged={props.isLogged}
                                     eventName={item.eventName}
+                                    eventString={item.eventString}
                                     firstCat={item.category.first}
                                     secondCat={item.category.second}
                                     thirdCat={item.category.third}
@@ -144,20 +143,19 @@ function User(props) {
                         </div>
                     </Col>
                     <Col md={4} className="my-3">
-                        <h3>EVENTS ATTENDING</h3>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h3>EVENT 1</h3>
-                                </li>
-                                <li>
-                                    <h3>EVENT 2</h3>
-                                </li>
-                                <li>
-                                    <h3>EVENT 3</h3>
-                                </li>
-                            </ul>
-                        </div>
+                        <h3 className="text-center">EVENTS ATTENDING</h3>
+                        {displayedUser.attending.map(item =>
+                        
+                        <Attending
+                            eventName={item.eventName}
+                            eventString={item.eventString}
+                            firstCat={item.category.first}
+                            secondCat={item.category.second}
+                            thirdCat={item.category.third}
+                            briefDetails={item.briefDetails}
+                            
+                        />
+                    )}
                     </Col>
 
                 </Row>
