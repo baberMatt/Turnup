@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect, useHistory } from "react-router-dom";
 import API from "./utils/api/API";
+// import { UserContext } from "./utils/userContext.js"
 import Nav from "./components/Nav/nav"
 import Landing from "./pages/Landing"
 import Event from "./pages/Event"
 import './App.css';
 import './assets/turnupMain.png'
 import Signup from "./components/signup/signup"
+import Attendees from "./components/Attendees/Attendess.js"
 import Hostevent from "./components/Hostevent/Hostevent.js"
 import User from "./pages/User"
 import Browse from "./pages/Browse";
@@ -30,14 +32,35 @@ function App() {
 
   const [redirect, setRedirect] = useState(null);
   const [userID, setUserID] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({ Username: "user", hosting: [], attending: [] });
+  const [isLogged, setIsLogged] = useState(false);
+  const [loginInit, setLoginInit] = useState(false)
+  
   const [modalSignUp, setModalSignUp] = useState(false);
   const [modalHost, setModalHost] = useState(false);
+  const [modalAttendees, setModalAttendees] = useState(false);
 
-  const [eventInFocus, setEventInFocus] = useState({});
+
+  const [eventInFocus, setEventInFocus] = useState({ attendees: [] });
 
   const toggleSignUp = () => setModalSignUp(!modalSignUp);
   const toggleHost = () => setModalHost(!modalHost);
+  const toggleAttendees = () => setModalAttendees(!modalAttendees);
+
+  const history = useHistory();
+  
+  useEffect(() => {
+    let checkLogged = sessionStorage.getItem("isLogged")
+    let loadUser = sessionStorage.getItem("user")
+    if (checkLogged) {
+      setIsLogged(true)
+      API.getUser(loadUser)
+        .then(res => {
+          setUser(res.data) 
+        })
+        .catch(err => console.log(err));
+    }
+  }, [])
 
   function handleSignIn() {
     if (userName && password) {
@@ -47,19 +70,31 @@ function App() {
         password: password
       })
         .then(user => {
-          API.updateUser(user.data._id, { islogged: true })
-
+          setIsLogged(true);
+          sessionStorage.setItem("isLogged", "true")
+          sessionStorage.setItem("user", user.data._id )
           API.getUser(user.data._id)
             .then(res => {
               setUser(res.data)
               setRedirect(userName);
               setRedirect(null);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));   
+        
         })
         .catch(err => console.log(err));
+        
     }
+  }
 
+ 
+  
+  
+
+  function logOut() {
+    setIsLogged(false)
+    sessionStorage.clear();
+    window.location.href = '/';
   }
 
   function handleSignUpSubmit() {
@@ -75,16 +110,19 @@ function App() {
     }
   };
 
+  //  ---- This function creates validates and creates a new Event object in the DB, then gets the newly formed event id, and relates it to the user that hosted ----//
   function handleHostFormSubmit() {
-    // event.preventDefault();
+  
 
+    let eventString = eventName.replace(/\s/g, '').toLowerCase();
     if (eventName && briefDetails && details && eventType && mainCat && location) {
 
-      let eventString = eventName.replace(/\s/g, '').toLowerCase();
+
       API.saveEvent({
         eventName: eventName,
         eventString: eventString,
-        host: user._id,
+        hosts: user._id,
+        attendees: user._id,
         briefDetails: briefDetails,
         details: details,
         eventType: eventType,
@@ -97,20 +135,26 @@ function App() {
       })
         .then(res => console.log("successful event Post"))
         .catch(err => console.log(err));
+    } else {
+      alert("We were not able to host your event")
     }
-    API.getEventname({ eventName: eventName })
+
+
+    API.getEventstring({ eventString: eventString })
       .then(res => {
-        
-        API.updateUser(user._id, {hosting: [...res.data.hosting, res.data._id]})
+          API.updateUser(user._id, { $push: { hosting: res.data._id } })
       })
-     
-        
       .catch(err => console.log(err));
   };
+  
 
   return (
     <div>
+      
       <Nav
+        user={user}
+        isLogged={isLogged}
+        logOut={logOut}
         setUserName={setUserName}
         setPassword={setPassword}
         handleSignIn={handleSignIn}
@@ -121,11 +165,12 @@ function App() {
         setUserName={setUserName}
         setEmail={setEmail}
         setPassword={setPassword}
-        handleSignIn={handleSignIn}
         handleFormSubmit={handleSignUpSubmit}
       />
       <Hostevent
         modalHost={modalHost}
+        eventType={eventType}
+        mainCat={mainCat}
         setEventName={setEventName}
         setEventType={setEventType}
         setBriefDetails={setBriefDetails}
@@ -137,6 +182,11 @@ function App() {
         toggleHost={toggleHost}
         handleHostFormSubmit={handleHostFormSubmit}
       />
+      <Attendees
+        eventInFocus={eventInFocus}
+        modalAttendees={modalAttendees}
+        toggleAttendees={toggleAttendees}
+      />
       <Router>
         {redirect ? <Redirect to={{ pathname: "/user/" + redirect }} /> :
 
@@ -147,15 +197,19 @@ function App() {
               />
             </Route>
             <Route exact path="/event/:currentEvent">
-              <Event 
-               user={user}
-               eventInFocus={eventInFocus}
-               setEventInFocus={setEventInFocus}
+              <Event
+                user={user}
+                isLogged={isLogged}
+                eventInFocus={eventInFocus}
+                setEventInFocus={setEventInFocus}
+                toggleAttendees={toggleAttendees}
               />
             </Route>
             <Route exact path="/user/:Username">
               <User
                 user={user}
+                isLogged={isLogged}
+                loginInit={loginInit}
                 setUser={setUser}
                 toggleHost={toggleHost}
               />
@@ -167,6 +221,7 @@ function App() {
 
         }
       </Router>
+      
     </div>
   );
 

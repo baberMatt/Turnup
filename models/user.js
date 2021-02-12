@@ -8,7 +8,6 @@ const userSchema = new Schema({
   lastName: { type: String, required: false },
   about: { type: String, required: false },
   email: { type: String, required: false },
-  islogged: { type: Boolean, required: false },
   attending: [
     {
       type: mongoose.Schema.Types.ObjectId,

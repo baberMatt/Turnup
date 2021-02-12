@@ -23,14 +23,15 @@ function Event(props) {
     const [eventBriefDetailsUpdate, setEventBriefDetailsUpdate] = useState();
     const [eventLocationUpdate, setEventLocationUpdate] = useState();
     const [eventDetailsUpdate, setEventDetailsUpdate] = useState();
+    const [eventAuth, setEventAuth] = useState(false);
 
     let { currentEvent } = useParams();
     const history = useHistory();
-    
+
 
     useEffect(() => {
 
-        API.getEventname({ eventString: currentEvent }).then(res => {
+        API.getEventstring({ eventString: currentEvent }).then(res => {
             props.setEventInFocus(res.data)
             setEventNameUpdate(props.eventInFocus.eventName)
             setEventBriefDetailsUpdate(props.eventInFocus.briefDetails)
@@ -40,10 +41,22 @@ function Event(props) {
 
     }, [currentEvent])
 
+    useEffect(() => {
+        function checkHost(host) {
+            let checkHostArr = []
+            props.user.hosting.map(item => checkHostArr.push(item._id))
+            if (checkHostArr.includes(host)) {
+                setEventAuth(true);
+            }
+
+        }
+        checkHost(props.eventInFocus._id)
+    }, [props.user])
+    
 
     console.log(props.eventInFocus)
     function editingEvent() {
-        if ( !editEvent ) {
+        if (!editEvent) {
             setEditEvent(true);
         }
         else {
@@ -58,14 +71,28 @@ function Event(props) {
     function handleEventBriefDetailsUpdate(event) {
         setEventBriefDetailsUpdate(event.target.value)
     }
-    
+
     function handleEventLocationUpdate(event) {
         setEventLocationUpdate(event.target.value)
     }
-    
+
     function handleEventDetailsUpdate(event) {
         setEventDetailsUpdate(event.target.value)
     }
+
+    function handleAttending() {
+        if (!props.isLogged) {
+            alert("We sorry, you need to sign in to attend and event, if you don't have an account, create one from our home page")
+        } else {
+            
+            API.updateUser(props.user._id, { $push: { attending: props.eventInFocus._id } })
+            API.updateEvent(props.eventInFocus._id, { $push: { attendees: props.user._id } })
+            alert("cant wait to see you there")
+            window.location.reload();
+        }
+
+    }
+
 
     return (
         <div id="event" className="d-flex justify-content-center">
@@ -77,13 +104,14 @@ function Event(props) {
                             <img id="bannerImage" src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2016/10/06121429/twenty20_5ac8d87c-3c0e-4cd3-a827-eccc2f30c894.jpg" />
                             <div id="bannerText" className="text-right" >
                                 {editEvent ? <input id="eventNameInput" type="text" value={eventNameUpdate} onChange={handleEventNameChange} placeholder={eventNameUpdate} /> : <h1 className="display-1">{props.eventInFocus.eventName}</h1>}
-                                {editEvent ? <input id="briefDetailsInput"type="text" value={eventBriefDetailsUpdate} onChange={handleEventBriefDetailsUpdate} placeholder={eventBriefDetailsUpdate} /> :<h5>{props.eventInFocus.briefDetails}</h5>}
+                                {editEvent ? <input id="briefDetailsInput" type="text" value={eventBriefDetailsUpdate} onChange={handleEventBriefDetailsUpdate} placeholder={eventBriefDetailsUpdate} /> : <h5>{props.eventInFocus.briefDetails}</h5>}
                             </div>
                         </Col>
                     </Row>
                     <Row className="eventContent eventBox d-flex justify-content-center">
                         <Col md={1} className="my-3">
-                            <button className="btn btn1" onClick={editingEvent}>Update</button>
+                            {eventAuth ? <button className="btn btn1" onClick={editingEvent}>Update</button> : <button className="btn btn1"  onClick={handleAttending}>Attend</button>}
+                            <button onClick={props.toggleAttendees} className="btn btn1">Who's Turning Up?</button>
                         </Col>
                         <Col md={3} className="my-3 ">
                             <h3>When its happening</h3>
@@ -93,7 +121,7 @@ function Event(props) {
                             <h6>day 3</h6>
                             <h6>day 4</h6>
                             <h3>Where its happening</h3>
-                            {editEvent ? <textarea rows="1" cols="60" type="text" value={eventLocationUpdate} onChange={handleEventLocationUpdate} placeholder={eventLocationUpdate} /> :<h6>{props.eventInFocus.location}</h6>}
+                            {editEvent ? <textarea rows="1" cols="60" type="text" value={eventLocationUpdate} onChange={handleEventLocationUpdate} placeholder={eventLocationUpdate} /> : <h6>{props.eventInFocus.location}</h6>}
                         </Col>
                         <Col md={7} className="my-3">
                             <h3>Details</h3>
@@ -101,28 +129,28 @@ function Event(props) {
                         </Col>
                     </Row>
                 </div>
-                 {/* MENU */}
-                 <Row>
+                {/* MENU */}
+                <Row>
                     <Col md={8} className="my-5 mx-auto" >
                         <div className="card mx-auto" style={{ border: "none", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)" }}>
                             <div className="card-body ">
                                 <h5 className="card-title" style={{ textAlign: "center", opacity: ".8" }}>What We Offer</h5>
                                 <div style={{ borderTop: "solid", borderColor: "gray" }}>
-                                    
-                                    <Menuitem 
-                                    itemName={"food"}
-                                    description={"Here go details about the item"}
-                                    price={"$10.00"}
+
+                                    <Menuitem
+                                        itemName={"food"}
+                                        description={"Here go details about the item"}
+                                        price={"$10.00"}
                                     />
-                                     <Menuitem 
-                                    itemName={"food"}
-                                    description={"Here go details about the item"}
-                                    price={"$10.00"}
+                                    <Menuitem
+                                        itemName={"food"}
+                                        description={"Here go details about the item"}
+                                        price={"$10.00"}
                                     />
-                                     <Menuitem 
-                                    itemName={"food"}
-                                    description={"Here go details about the item"}
-                                    price={"$10.00"}
+                                    <Menuitem
+                                        itemName={"food"}
+                                        description={"Here go details about the item"}
+                                        price={"$10.00"}
                                     />
 
                                 </div>
@@ -132,7 +160,7 @@ function Event(props) {
 
                 </Row>
 
-                
+
             </Container>
         </div>
     );

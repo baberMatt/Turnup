@@ -25,6 +25,7 @@ export default {
   },
   // Updates the User with the given id
   updateUser: function (id, update) {
+    // console.log("axios user " + update)
     return axios.put("/api/user/" + id, update);
   },
   // Saves a User to the database
@@ -35,12 +36,22 @@ export default {
     return axios.get("/api/event")
   },
   saveEvent: function (userData) {
-    console.log(userData);
+   
     return axios.post("/api/event/", userData);
   },
   getEventname: function (eventNameData) {
-    console.log(eventNameData)
-    var eventRequest = { eventString : eventNameData.eventString}
+    
+    var eventRequest = { eventName : eventNameData.eventName}
     return axios.post("/api/event/one", eventRequest);
-  }
+  },
+  getEventstring: function (eventStringData) {
+    
+    var eventRequest = { eventString : eventStringData.eventString}
+    return axios.post("/api/event/one", eventRequest);
+  },
+  updateEvent: function (id, update) {
+
+    // console.log("axios event " + update)
+    return axios.put("/api/event/" + id, update);
+  },
 };

@@ -4,21 +4,21 @@ const db = require("../models");
 module.exports =
 //users
 {
-    
+
     findAll: function (req, res) {
-        
         db.User
             .find(req)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    findOne: function (req, res){
+    findOne: function (req, res) {
         console.log(req.body)
         db.User
-        .findOne({ Username: req.body.Username })
-        .populate("hosting")
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+            .findOne({ Username: req.body.Username })
+            .populate("hosting")
+            .populate("attending")
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
         db.User
@@ -34,6 +34,7 @@ module.exports =
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
+        console.log("user " + req.body)
         db.User
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbModel => res.json(dbModel))
@@ -46,7 +47,7 @@ module.exports =
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    //   events
     
+
 
 };
