@@ -6,7 +6,7 @@ import "./style.css"
 
 function Eventguest(props) {
 
-    console.log(props)
+    console.log(props.host)
 
     return (
         <div className="my-5">
@@ -20,13 +20,14 @@ function Eventguest(props) {
                     {props.host 
                         ? ( <h6>Hosting</h6> 
                         ) : (
-                            (<h6>dates going...</h6> +
-                            props.dates.map(item => (
+                            (<><h6>dates going...</h6> 
+                           
+                            {props.dates.map( (item, index) => (
                             <p>{item}</p>
-                            ))
-                            
+                            ))}
+                            </>
                         ))}
-
+                    
                 </Col>
             </Row>
 

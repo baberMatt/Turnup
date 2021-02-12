@@ -32,11 +32,11 @@ function User(props) {
 
         API.getUsername({ Username: Username }).then(res => {
                 setDisplayedUser(res.data);
-                setAboutMeUpdate(displayedUser.about)
-                setFirstNameUpdate(displayedUser.firstName)
-                setLastNameUpdate(displayedUser.lastName)
-                console.log("effect rendered")
         })
+
+        setAboutMeUpdate(displayedUser.about)
+        setFirstNameUpdate(displayedUser.firstName)
+        setLastNameUpdate(displayedUser.lastName)
 
     }, [Username])
 
@@ -144,19 +144,22 @@ function User(props) {
                     </Col>
                     <Col md={4} className="my-3">
                         <h3 className="text-center">EVENTS ATTENDING</h3>
-                        {console.log(displayedUser.attending)}
-                        {displayedUser.attending.map(item =>
+                        {console.log(displayedUser)}
+                        {displayedUser.attending ? (
+                        displayedUser.attending.map(item =>
                         
-                        <Attending
-                            eventName={item.event.eventName}
-                            eventString={item.event.eventString}
-                            firstCat={item.event.category.first}
-                            secondCat={item.event.category.second}
-                            thirdCat={item.event.category.third}
-                            briefDetails={item.event.briefDetails}
-                            
-                        />
-                    )}
+                            <Attending
+                                eventName={item.event.eventName}
+                                eventString={item.event.eventString}
+                                firstCat={item.event.category.first}
+                                secondCat={item.event.category.second}
+                                thirdCat={item.event.category.third}
+                                briefDetails={item.event.briefDetails}
+                                
+                            />
+                        )) : (
+                            <h3>I'm not currently attending any events</h3>
+                        )}
                     </Col>
 
                 </Row>
