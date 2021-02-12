@@ -13,6 +13,19 @@ function Hostevent(props) {
     } = props;
 
     function hostFormSubmit() {
+        
+
+
+        if ( (props.eventType === "Select One") || ( props.eventType === "" ) ) {
+            alert("please select a event type")
+            return;
+        }
+
+        if  ( (props.mainCat === "Select One") || (props.mainCat === "") ){
+            alert("please select a category")
+            return;
+        }
+
         props.handleHostFormSubmit();
         props.toggleHost();
     }
@@ -28,6 +41,7 @@ function Hostevent(props) {
                     <div class="d-inline-block">
                         <input onChange={event => props.setEventName(event.target.value)} placeholder="Event Name" />
                         <select onChange={event => props.setEventType(event.target.value)} placeholder="Event Type">
+                            <option value="Select One">Select One</option>
                             <option value="Pop Up">Pop Up</option>
                             <option value="Ghost Kitchen">Ghost Kitchen</option>
                         </select>
@@ -41,6 +55,7 @@ function Hostevent(props) {
                     </div>
                     <div class="">
                         <select onChange={event => props.setMainCat(event.target.value)} placeholder="Main Category">
+                            <option value="Select One">Select One</option>
                             <option value="Food">Food</option>
                             <option value="Maker">Maker</option>
                         </select>

@@ -13,8 +13,8 @@ import App from "../../App.js"
 
 function Nav(props) {
 
-   
-    
+
+
 
 
     return (
@@ -26,9 +26,9 @@ function Nav(props) {
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
                     <a href="/" className="m-auto">Home</a>
                 </Col>
-                
-                    <img id="icon" className="img-fluid " src={Turnupicon} />
-               
+
+                <img id="icon" className="img-fluid " src={Turnupicon} />
+
                 <Col lg={1} className="navTab text-center d-flex align-items-center ">
                     <a href="#" className="m-auto">Search</a>
                 </Col>
@@ -36,11 +36,15 @@ function Nav(props) {
                     <a href="#" className="m-auto">About Us</a>
                 </Col>
                 <Col lg={2} className=" loginCol p-0">
-                    <Login
-                        setUserName={props.setUserName}
-                        setPassword={props.setPassword}
-                        handleSignIn={props.handleSignIn}
-                    />
+                    {!props.isLogged ? "" : <a href={"/user/" + props.user.Username}><button className="btn btn1">Profile</button></a>}
+                    {!props.isLogged ?
+                        <Login
+                           
+                            setUserName={props.setUserName}
+                            setPassword={props.setPassword}
+                            handleSignIn={props.handleSignIn}
+                        />
+                        : <button onClick={props.logOut} className="ml-1 btn btn1">Log Out</button>}
                 </Col>
             </Row>
 

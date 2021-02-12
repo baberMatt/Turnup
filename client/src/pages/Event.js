@@ -24,14 +24,22 @@ function Event(props) {
     const [eventBriefDetailsUpdate, setEventBriefDetailsUpdate] = useState();
     const [eventLocationUpdate, setEventLocationUpdate] = useState();
     const [eventDetailsUpdate, setEventDetailsUpdate] = useState();
+
     let { currentEvent } = useParams();
     const history = useHistory();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+    const [eventAuth, setEventAuth] = useState(false);
+
+    
+    
+
+
+
     useEffect(() => {
 
-        API.getEventname({ eventString: currentEvent }).then(res => {
+        API.getEventstring({ eventString: currentEvent }).then(res => {
             props.setEventInFocus(res.data)
             setEventNameUpdate(props.eventInFocus.eventName)
             setEventBriefDetailsUpdate(props.eventInFocus.briefDetails)
@@ -41,6 +49,18 @@ function Event(props) {
 
     }, [currentEvent])
 
+    useEffect(() => {
+        function checkHost(host) {
+            let checkHostArr = []
+            props.user.hosting.map(item => checkHostArr.push(item._id))
+            if (checkHostArr.includes(host)) {
+                setEventAuth(true);
+            }
+
+        }
+        checkHost(props.eventInFocus._id)
+    }, [props.user])
+    
 
     console.log(props.eventInFocus)
     function editingEvent() {
@@ -68,6 +88,20 @@ function Event(props) {
         setEventDetailsUpdate(event.target.value)
     }
 
+    function handleAttending() {
+        if (!props.isLogged) {
+            alert("We sorry, you need to sign in to attend and event, if you don't have an account, create one from our home page")
+        } else {
+            
+            API.updateUser(props.user._id, { $push: { attending: props.eventInFocus._id } })
+            API.updateEvent(props.eventInFocus._id, { $push: { attendees: props.user._id } })
+            alert("cant wait to see you there")
+            window.location.reload();
+        }
+
+    }
+
+
     return (
         <div id="event" className="d-flex justify-content-center">
             <Container fluid>
@@ -84,7 +118,8 @@ function Event(props) {
                     </Row>
                     <Row className="eventContent eventBox d-flex justify-content-center">
                         <Col md={1} className="my-3">
-                            <button className="btn btn1" onClick={editingEvent}>Update</button>
+                            {eventAuth ? <button className="btn btn1" onClick={editingEvent}>Update</button> : <button className="btn btn1"  onClick={handleAttending}>Attend</button>}
+                            <button onClick={props.toggleAttendees} className="btn btn1">Who's Turning Up?</button>
                         </Col>
                         <Col md={3} className="my-3 ">
                             <h3>When its happening</h3>
