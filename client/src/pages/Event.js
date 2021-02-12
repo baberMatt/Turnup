@@ -3,8 +3,8 @@ import { useParams, useHistory } from "react-router-dom"
 import API from "../utils/api/API";
 // import { Link } from "react-router-dom";
 import Menuitem from "../components/Menuitem/Menuitem.js";
-
 // import API from "../utils/api/API";
+import { Modal, Form, } from "react-bootstrap"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -20,20 +20,25 @@ import "react-datepicker/dist/react-datepicker.css";
 function Event(props) {
     const [Event, setEvent] = useState("");
     const [editEvent, setEditEvent] = useState(false);
+    const [addDate, setAddDate] = useState(false);
     const [eventNameUpdate, setEventNameUpdate] = useState();
     const [eventBriefDetailsUpdate, setEventBriefDetailsUpdate] = useState();
     const [eventLocationUpdate, setEventLocationUpdate] = useState();
     const [eventDetailsUpdate, setEventDetailsUpdate] = useState();
+    const [datesForSubmit, setDatesForSubmit] = useState({})
+
 
     let { currentEvent } = useParams();
     const history = useHistory();
+
     const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+
+
 
     const [eventAuth, setEventAuth] = useState(false);
 
-    
-    
+
+
 
 
 
@@ -60,9 +65,9 @@ function Event(props) {
         }
         checkHost(props.eventInFocus._id)
     }, [props.user])
-    
 
-    console.log(props.eventInFocus)
+
+    
     function editingEvent() {
         if (!editEvent) {
             setEditEvent(true);
@@ -88,18 +93,62 @@ function Event(props) {
         setEventDetailsUpdate(event.target.value)
     }
 
+  
+    function addingDate() {
+        setAddDate(true);
+    }
+
+    function submitDate() {
+        var dateFormat = require("dateformat")
+        let formattedDate = (dateFormat(startDate, "dddd, mmmm, dS, yyyy"))
+        API.updateEvent(props.eventInFocus._id, { $push: { datesOpen: formattedDate } })
+        setAddDate(false)
+        window.location.reload();
+    }
+
+    function handleAddDate(e) {
+        console.log(e.target)
+        if (e.target.classList.contains("checkedBtn")) {
+            e.target.classList.remove("checkedBtn")
+            e.target.innerHTML = "x"
+            let dateID = e.target.getAttribute('data-numb')
+            let newDates = {...datesForSubmit}
+            delete newDates[`${dateID}`]
+            setDatesForSubmit(newDates)
+        } else {
+            e.target.classList.add("checkedBtn") 
+            e.target.innerHTML = "o"
+            let dateID = e.target.getAttribute('data-numb')
+            let chosenDate = document.getElementById(`dateItem${dateID}`).textContent
+            setDatesForSubmit({...datesForSubmit, [dateID] : chosenDate })
+        }
+
+    }
+
     function handleAttending() {
-        if (!props.isLogged) {
+         if (!props.isLogged) {
             alert("We sorry, you need to sign in to attend and event, if you don't have an account, create one from our home page")
         } else {
-            
-            API.updateUser(props.user._id, { $push: { attending: props.eventInFocus._id } })
-            API.updateEvent(props.eventInFocus._id, { $push: { attendees: props.user._id } })
+            let dateSubmission = Object.values(datesForSubmit)
+            console.log(dateSubmission)
+            API.updateUser(props.user._id, { $push: { "attending": { event : props.eventInFocus._id, dates: dateSubmission } } })
+            console.log(dateSubmission)
+            API.updateEvent(props.eventInFocus._id, { $push: { "attendees": { guest : props.user._id, dates: dateSubmission } } })
             alert("cant wait to see you there")
             window.location.reload();
         }
 
+        handleClose();
     }
+
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
+
 
 
     return (
@@ -117,43 +166,45 @@ function Event(props) {
                         </Col>
                     </Row>
                     <Row className="eventContent eventBox d-flex justify-content-center">
-                        <Col md={1} className="my-3">
-                            {eventAuth ? <button className="btn btn1" onClick={editingEvent}>Update</button> : <button className="btn btn1"  onClick={handleAttending}>Attend</button>}
+                        <Col md={2} className="my-3 eventBtn d-flex flex-column justify-content-around">
+                            {eventAuth ?
+                                <button className="btn btn1" onClick={editingEvent}>Update</button>
+                                : <button className="btn btn1" onClick={handleShow}>Attend</button>}
                             <button onClick={props.toggleAttendees} className="btn btn1">Who's Turning Up?</button>
                         </Col>
                         <Col md={3} className="my-3 ">
                             <h3>When its happening</h3>
-                            <div>
+                            {props.eventInFocus.datesOpen ? (
+                                props.eventInFocus.datesOpen.map(item => (
+                                    <h6>{item}</h6>
+                                ))
+                            ) : (<h6>No dates on the calendar yet...</h6>)}
+                            {editEvent ? <button onClick={addingDate} className="btn btn1 btn-sm">Add a date</button> : ""}
+                            {addDate ? <div className="my-3">
                                 <DatePicker
                                     selected={startDate}
+                                    dateFormat="eeee MMM dd, yyyy"
                                     onChange={date => setStartDate(date)}
                                     selectsStart
                                     startDate={startDate}
-                                    endDate={endDate}
                                 />
-                                <DatePicker
-                                    selected={endDate}
-                                    onChange={date => setEndDate(date)}
-                                    selectsEnd
-                                    startDate={startDate}
-                                    endDate={endDate}
-                                    minDate={startDate}
-                                />
-                            </div>
-                            <h6>day 2</h6>
-                            <h6>day 3</h6>
-                            <h6>day 4</h6>
+                                <button onClick={submitDate} className="ml-1 btn btn1 btn-sm">+</button>
+                            </div> : ""}
+
                             <h3>Where its happening</h3>
                             {editEvent ? <textarea rows="1" cols="60" type="text" value={eventLocationUpdate} onChange={handleEventLocationUpdate} placeholder={eventLocationUpdate} /> : <h6>{props.eventInFocus.location}</h6>}
                         </Col>
-                        <Col md={7} className="my-3">
+                        <Col md={6} className="my-3">
                             <h3>Details</h3>
                             {editEvent ? <textarea rows="5" cols="120" type="text" value={eventDetailsUpdate} onChange={handleEventDetailsUpdate} placeholder={eventDetailsUpdate} /> : <p>{props.eventInFocus.details}</p>}
                         </Col>
                     </Row>
+
                 </div>
                 {/* MENU */}
                 <Row>
+
+
                     <Col md={8} className="my-5 mx-auto" >
                         <div className="card mx-auto" style={{ border: "none", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)" }}>
                             <div className="card-body ">
@@ -182,6 +233,31 @@ function Event(props) {
                     </Col>
 
                 </Row>
+
+                <>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Which days are you turning up?</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                        {props.eventInFocus.datesOpen ? ( 
+                                
+                                props.eventInFocus.datesOpen.map((item, index) => (
+
+                                    <div>
+                                        <h6  id={"dateItem" + index} className=" d-inline-block">{item}</h6> 
+                                        <button data-numb={index} onClick={handleAddDate} className="btn btn1 btn-sm ml-1">x</button>
+                                    </div>
+                                ))
+                                
+                            ) : (<h6 className="popOverDate">Wait till we're on the calendar</h6>)}
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <button className="btn btn1 btn-sm" onClick={handleAttending} >Let's GO!</button>
+                        <button className="btn btn1 btn-sm" onClick={handleClose} >Close</button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
 
 
             </Container>

@@ -10,9 +10,12 @@ const userSchema = new Schema({
   email: { type: String, required: false },
   attending: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Event"
-    }
+      event: {
+        type: Schema.Types.ObjectId,
+        ref: "Event"
+      },
+      dates: Array
+    } 
   ],
   hosting: [
     {

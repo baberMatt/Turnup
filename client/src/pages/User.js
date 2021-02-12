@@ -144,15 +144,16 @@ function User(props) {
                     </Col>
                     <Col md={4} className="my-3">
                         <h3 className="text-center">EVENTS ATTENDING</h3>
+                        {console.log(displayedUser.attending)}
                         {displayedUser.attending.map(item =>
                         
                         <Attending
-                            eventName={item.eventName}
-                            eventString={item.eventString}
-                            firstCat={item.category.first}
-                            secondCat={item.category.second}
-                            thirdCat={item.category.third}
-                            briefDetails={item.briefDetails}
+                            eventName={item.event.eventName}
+                            eventString={item.event.eventString}
+                            firstCat={item.event.category.first}
+                            secondCat={item.event.category.second}
+                            thirdCat={item.event.category.third}
+                            briefDetails={item.event.briefDetails}
                             
                         />
                     )}

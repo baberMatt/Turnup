@@ -16,7 +16,13 @@ module.exports =
         db.User
             .findOne({ Username: req.body.Username })
             .populate("hosting")
-            .populate("attending")
+            .populate({
+                path: "attending",
+                populate: {
+                  path: 'event',
+                  model: "Event"
+                }
+            })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

@@ -20,7 +20,13 @@ module.exports =
         console.log(req.body)
         db.Event
         .findOne({ eventString: req.body.eventString })
-        .populate("attendees")
+        .populate({
+            path: "attendees",
+            populate: {
+              path: 'guest',
+              model: "User"
+            }
+        })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
