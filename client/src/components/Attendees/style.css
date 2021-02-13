@@ -13,21 +13,3 @@
 }
 
 
-.navTab a:link {
-  color: #061c03;
-  font-family: 'Londrina Solid', cursive;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-.navTab a:visited {
-  color: #061c03;
-}
-
-.navTab a:hover {
-  color: #ddc3ba;
-}
-
-.navTab a:active {
-  color: #b361a9;
-}
