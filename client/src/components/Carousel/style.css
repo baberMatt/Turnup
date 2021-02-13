@@ -4,14 +4,14 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    border: .75
-    mm;
+    border: .8mm;
     border-style: solid;
-    border-color: rgba(0, 0, 0, 0.253);
+    border-color: rgba(0, 0, 0, 0.377);
     border-radius: 5mm;
     position: relative;
     object-fit: cover;
-    opacity: .80;
+    opacity: 1;
+    
     
 }
 
