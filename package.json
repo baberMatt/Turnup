@@ -11,7 +11,7 @@
     "seed1": "node seeders/seedUsers.js",
     "seed2": "node seeders/seedEvents.js",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm run build && npm run seed1 && npm run seed2",
     "seedgoose": "seedgoose",
     "heroku-postbuild": "npm run build"
   },
