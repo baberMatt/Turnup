@@ -46,7 +46,7 @@ function Signup(props) {
           </div> */}
         </ModalBody>
         <ModalFooter>
-          <Button className="signupButtons" color="primary" onClick={signUpFormSubmit}>Submit</Button>{' '}
+          <Button className="signupButtons" color="primary" onClick={props.handleSingUpSubmit}>Submit</Button>{' '}
           <Button className="signupButtons" color="secondary" onClick={props.toggleSignUp}>Cancel</Button>
         </ModalFooter>
       </Modal>

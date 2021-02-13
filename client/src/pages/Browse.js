@@ -49,7 +49,9 @@ function Browse(props) {
                 <Row >
 
                     <div className="col-12 ">
-                        <Carousell></Carousell>
+                        <Carousell
+                        browse={browse}
+                        ></Carousell>
                     </div>
 
                 </Row>
@@ -70,11 +72,10 @@ function Browse(props) {
 
                             eventString={item.eventString}
                             cardText={item.briefDetails} 
-                            cardBackground={item.photo}/>
+                            cardPhoto={item.photo1}/>
 
-                            cardText={item.briefDetails}
-                            cardPhoto={item.photo1}
-                             />
+                            
+                             
 
                     )
                     )}

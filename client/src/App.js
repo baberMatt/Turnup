@@ -167,7 +167,7 @@ function App() {
         setUserName={setUserName}
         setEmail={setEmail}
         setPassword={setPassword}
-        handleFormSubmit={handleSignUpSubmit}
+        handleSignUpSubmit={handleSignUpSubmit}
       />
       <Hostevent
         modalHost={modalHost}
