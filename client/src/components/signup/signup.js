@@ -22,8 +22,11 @@ function Signup(props) {
 
     <div>
 
-      <Modal isOpen={props.modalSignUp} toggle={props.toggleSignUp} className={className}>
-        <ModalHeader toggle={props.toggleSignUp}></ModalHeader>
+      <Modal  id="signUpBody" isOpen={props.modalSignUp} toggle={props.toggleSignUp} className={className}>
+        <ModalHeader toggle={props.toggleSignUp}>
+          <h4>Welcome to Turnup</h4>
+          <h6>sign up and see what its all about!</h6>
+        </ModalHeader>
         <ModalBody>
           <div className="">
             <input onChange={event => props.setUserName(event.target.value)} type="text" username="username" id="username" placeholder="Your User Name" />

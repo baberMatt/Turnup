@@ -12,7 +12,7 @@ function Login(props) {
       <table>
         <tr>
           <td><input size="3" className="input" onChange={event => props.setUserName(event.target.value)}></input></td>
-          <td><input size="3" className="input" onChange={event => props.setPassword(event.target.value)}></input></td>
+          <td><input size="3" className="input" type="password" onChange={event => props.setPassword(event.target.value)}></input></td>
           <td><button className="btn btn2" onClick={props.handleSignIn}>Log In</button></td>
         </tr>
       </table>
