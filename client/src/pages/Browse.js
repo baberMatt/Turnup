@@ -67,7 +67,9 @@ function Browse(props) {
                     (
                         <BrowseCard
                             cardTitle={item.eventName}
-                            cardText={item.briefDetails} />
+                            cardText={item.briefDetails}
+                            cardPhoto={item.photo1}
+                             />
                     )
                     )}
 
@@ -84,7 +86,9 @@ function Browse(props) {
                         (
                             <BrowseCard
                                 cardTitle={item.eventName}
-                                cardText={item.briefDetails} />
+                                cardText={item.briefDetails} 
+                                cardPhoto={item.photo1}
+                                />
                         )
                         )}
                 </div>
