@@ -7,31 +7,42 @@ import {
   CarouselCaption
 } from 'reactstrap';
 import "./style.css"
-import food3 from '../../assets/pancakes.jpg'
+import wb1 from '../../assets/wolfboy1.png'
+import taco from '../../assets/taco2.png'
+import sugar from '../../assets/sugarsmoke.png'
 
 
-const items = [
-  {
-    src: food3,
-    altText: 'Slide 1',
-    caption: ''
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1555895059-47ac7565bb37?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80',
-    altText: 'Slide 2',
-    caption: ''
-  },
-  {
-    style: 'height:300px',
-    src: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?cs=srgb&dl=pexels-ella-olsson-1640777.jpg&fm=jpg',
-    altText: 'Slide 3',
-    caption: ''
-  }
-];
 
 const Carousell = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+
+  let random = Math.floor(Math.random() * 10); 
+  let carouselBrowse = [];
+  carouselBrowse.push(props.browse[random])
+  carouselBrowse.push(props.browse[random])
+  carouselBrowse.push(props.browse[random])
+  console.log(carouselBrowse)
+
+  
+  const items = [
+    {
+      src: wb1,
+      altText: 'Slide 1',
+      caption: ''
+    },
+    {
+      src: taco,
+      altText: 'Slide 2',
+      caption: ''
+    },
+    {
+      
+      src: sugar,
+      altText: 'Slide 3',
+      caption: ''
+    }
+  ];
 
   const next = () => {
     if (animating) return;

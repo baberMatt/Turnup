@@ -160,7 +160,7 @@ function Event(props) {
             <Container fluid>
                 <div onClick={addHost} id="addHost"></div>
                 <div className="shadowEvent">
-                    <Row className="mt-3  eventContent d-flex justify-content-center">
+                    <Row className="mt-3 headerContent  eventContent d-flex justify-content-center">
 
                         <Col md={12} id="bannerCol" className="d-flex p-0 justify-content-center">
                             <img id="bannerImage" src={props.eventInFocus.photo1} />

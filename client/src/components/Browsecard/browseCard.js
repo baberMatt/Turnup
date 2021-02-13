@@ -7,23 +7,18 @@ import img1 from "../../assets/pancakes.jpg"
 
 function BrowseCard(props) {
     console.log(img1)
-    
+
     return (
         <div className="">
+            <div className="card item shadowUser" style={{ width: "14vw", borderRadius: "5mm" }}>
+                <div className="card-body cardlinks" style={{ backgroundImage: `url(${props.cardPhoto})`, borderRadius: "5mm", WebkitBackgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}>
+                    <a className="" href={'/event/' + props.eventString} ><h5 className="card-title smoke">{props.cardTitle}</h5></a>
+                    <p className="card-text smoke">{props.cardText}</p>
 
-            <div className="card item shadowUser" style={{width:"14vw", borderRadius:"5mm"}}>
-                <div className="card-body">
-                    <a href={'/event/' + props.eventString } ><h5 className="card-title">{props.cardTitle}</h5></a>
-
-            <div className="card item shadowUser" style={{width:"14vw", borderRadius:"5mm" }}>
-                <div className="card-body" style={{backgroundImage: `url(${props.cardPhoto})`, borderRadius: "5mm", WebkitBackgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}>
-                    <h5 className="card-title">{props.cardTitle}</h5>
-
-                    <p className="card-text">{props.cardText}</p>
-                    
                 </div>
             </div>
-        </div>
+
+        /</div>
     );
 }
 
