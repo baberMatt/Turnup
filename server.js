@@ -19,8 +19,8 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-passport.use(new LocalStrategy( 
-  function(username, password, done) {
+passport.use(new LocalStrategy(
+  function (username, password, done) {
     console.log(username, password)
     User.findOne({ Username: username }, function (err, user) {
       if (err) { return done(err); }
@@ -39,22 +39,22 @@ passport.use(new LocalStrategy(
   }
 ));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
     done(err, user);
   });
 });
 
-app.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
+app.post('/login', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
     console.log("in route", user)
     if (err) { return next(err); }
     if (!user) { return res.json("incorrect username"); }
-    req.logIn(user, function(err) {
+    req.logIn(user, function (err) {
       if (err) { return next(err); }
       return res.json(user);
     });
@@ -78,10 +78,18 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/turnup");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/turnup",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
+
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
