@@ -263,25 +263,43 @@ html {
  background-image: url("./assets/turnupBGlong.png")
 }
 
-.netf {
-  display: flex;
-  padding: 0 55px;
-}
 
 .item {
-  
-  
   text-align: center;
-  margin: 0 2px;
+  margin-left: 3rem;
   transition: transform 300ms ease 100ms;
 }
 
-
-
-
-
 .item:hover {
-  transform: scale(1.5) !important;
+  transform: scale(1.1) !important;
 }
 
 
+.bcard{
+  height: 80%;
+}
+
+.item>.card-body{
+height: 20rem;
+font-family: 'Londrina Solid', cursive;
+letter-spacing: 4px;
+}
+
+
+
+.cardCategory{
+  font-family: 'Londrina Solid', cursive;
+  letter-spacing: 20px;
+  font-size: 600%;
+  text-shadow: 3px 3px #797979;
+}
+
+.item>.card-body>h5{
+  margin-top: 30%;
+  text-shadow: 1px 2px rgba(202,144,178,1);
+}
+
+.item>.card-body>.card-title>.card-text{
+  margin-top: 2%;
+
+}

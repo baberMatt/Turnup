@@ -4,8 +4,10 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    border: .05mm;
+    border: .75
+    mm;
     border-style: solid;
+    border-color: rgba(0, 0, 0, 0.253);
     border-radius: 5mm;
     position: relative;
     object-fit: cover;
@@ -15,7 +17,7 @@
 
 @media only screen and (min-width: 1301px) {
     .carousel-item>img {
-        width: 70%;
+        width: 80%;
         height: 480px;
     }
 }
@@ -23,7 +25,7 @@
 .carousel {
     display: flex;
     align-items: center;
-    margin-top: 13%;
+    margin-top: 5%;
 }
 
 .carousel-control-prev, .carousel-control-next {
