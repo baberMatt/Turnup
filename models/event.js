@@ -19,7 +19,8 @@ const eventSchema = new Schema({
       dates: Array
     }    
   ],
-  photos: Array,
+  photos1: { type: String, required: false },
+  photos2: { type: String, required: false },
   briefDetails: { type: String, required: true },
   details: { type: String, required: true },
   bannerImage: { type: String, required: false },

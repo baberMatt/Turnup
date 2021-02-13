@@ -147,18 +147,23 @@ function Event(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    function addHost() {
+        API.updateEvent(props.eventInFocus._id, { $push: { "hosts": props.user._id } })
+        .then(res => console.log("successful host Post"))
+        .catch(err => console.log(err));
+    }
 
-
-
-
+  
+   
     return (
         <div id="event" className="d-flex justify-content-center">
             <Container fluid>
+                <div onClick={addHost} id="addHost"></div>
                 <div className="shadowEvent">
                     <Row className="mt-3  eventContent d-flex justify-content-center">
 
                         <Col md={12} id="bannerCol" className="d-flex p-0 justify-content-center">
-                            <img id="bannerImage" src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2016/10/06121429/twenty20_5ac8d87c-3c0e-4cd3-a827-eccc2f30c894.jpg" />
+                            <img id="bannerImage" src={props.eventInFocus.photo1} />
                             <div id="bannerText" className="text-right" >
                                 {editEvent ? <input id="eventNameInput" type="text" value={eventNameUpdate} onChange={handleEventNameChange} placeholder={eventNameUpdate} /> : <h1 className="display-1">{props.eventInFocus.eventName}</h1>}
                                 {editEvent ? <input id="briefDetailsInput" type="text" value={eventBriefDetailsUpdate} onChange={handleEventBriefDetailsUpdate} placeholder={eventBriefDetailsUpdate} /> : <h5>{props.eventInFocus.briefDetails}</h5>}
