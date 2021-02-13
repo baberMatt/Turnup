@@ -22,19 +22,15 @@ function Attendees(props) {
 
     <div>
 
-      <Modal isOpen={props.modalAttendees} toggle={props.toggleAttendees} className={className}>
-        <ModalHeader toggle={props.toggleAttendees}></ModalHeader>
+      <Modal id="attendeesBody" isOpen={props.modalAttendees} toggle={props.toggleAttendees} className={className}>
+        <ModalHeader toggle={props.toggleAttendees}>
+          <h3>This is who is turning up for...</h3>
+          <h1>{props.eventInFocus.eventName}</h1>
+        </ModalHeader>
         <ModalBody>
           <Container>
-            <Row>
-              <Col md={12}>
-                <h3>This is who is turning up for...</h3>
-                <h1>{props.eventInFocus.eventName}</h1>
-              </Col>
-
-            </Row>
-            <Row>
-              <Col md={8}>
+            <Row className="d-flex justify-content-center">
+              <Col md={10}>
 
                 {props.eventInFocus.attendees.map(item =>
                    item.guest.hosting.includes(props.eventInFocus._id) ? (

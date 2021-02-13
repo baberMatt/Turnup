@@ -36,7 +36,10 @@ function Hostevent(props) {
         <div>
 
             <Modal id="modalBackground" isOpen={props.modalHost} toggle={props.toggleHost} className={className}>
-                <ModalHeader toggle={props.toggleHost}></ModalHeader>
+                <ModalHeader toggle={props.toggleHost}>
+                    <h4>Gives us some details about your event.</h4>
+                    <h6>Dont worry, you'll be able to add more info likes dates on the hosted page...</h6>
+                </ModalHeader>
                 <ModalBody>
                     <div className="d-inline-block">
                         <input className="styleInput" onChange={event => props.setEventName(event.target.value)} placeholder="Event Name" />
