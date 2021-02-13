@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col'
 import Food1 from '../../assets/food1.jpg'
 import Food2 from '../../assets/food2.jpg'
 import Pcake from '../../assets/pancakes.jpg'
-import Noble from '../../assets/noble.png'
 import "./style.css"
 
 

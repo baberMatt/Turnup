@@ -297,9 +297,14 @@ letter-spacing: 4px;
 .item>.card-body>h5{
   margin-top: 30%;
   text-shadow: 1px 2px rgba(202,144,178,1);
+  background-color: rgb(0, 0, 0);
 }
 
 .item>.card-body>.card-title>.card-text{
   margin-top: 2%;
 
+}
+
+.netf{
+  margin-bottom: 3rem;
 }

@@ -6,7 +6,6 @@ import Nav from "./components/Nav/nav"
 import Landing from "./pages/Landing"
 import Event from "./pages/Event"
 import './App.css';
-import './assets/turnupMain.png'
 import Signup from "./components/signup/signup"
 import Attendees from "./components/Attendees/Attendess.js"
 import Hostevent from "./components/Hostevent/Hostevent.js"

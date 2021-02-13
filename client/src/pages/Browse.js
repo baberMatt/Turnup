@@ -61,20 +61,22 @@ function Browse(props) {
                         <h2 className="cardCategory">Food</h2>
                     </div>
                 </Row>
-
+                
                 <div className="netf d-flex justify-content-center">
                     {sortedFood.map(item =>
                     (
-                        <BrowseCard
+                        <BrowseCard 
                             cardTitle={item.eventName}
-                            cardText={item.briefDetails} />
+                            eventString={item.eventString}
+                            cardText={item.briefDetails} 
+                            cardBackground={item.photo}/>
                     )
                     )}
 
                 </div>
 
                 <Row>
-                    <div className="col-12" style={{ textAlign: "center" }}>
+                    <div className="col-12" style={{ textAlign: "center",  marginTop: "3rem", marginBottom: "2rem" }}>
                         <h2 className="cardCategory">Makers</h2>
                     </div>
                 </Row>

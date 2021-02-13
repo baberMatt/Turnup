@@ -9,9 +9,9 @@ function BrowseCard(props) {
 
     return (
         <div className="">
-            <div className="card item shadowUser" style={{width:"14vw", borderRadius:"5mm" }}>
+            <div className="card item shadowUser" style={{width:"14vw", borderRadius:"5mm"}}>
                 <div className="card-body">
-                    <h5 className="card-title">{props.cardTitle}</h5>
+                    <a href={'/event/' + props.eventString } ><h5 className="card-title">{props.cardTitle}</h5></a>
                     <p className="card-text">{props.cardText}</p>
                 </div>
             </div>
