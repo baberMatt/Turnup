@@ -57,8 +57,8 @@ function Attendees(props) {
           </Container>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" >Submit</Button>{' '}
-          <Button color="secondary" onClick={props.toggleAttendees}>Cancel</Button>
+          <Button className="attendeeButtons" color="primary" >Submit</Button>{' '}
+          <Button className="attendeeButtons" color="secondary" onClick={props.toggleAttendees}>Cancel</Button>
         </ModalFooter>
       </Modal>
     </div >
