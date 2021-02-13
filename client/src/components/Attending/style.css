@@ -1,0 +1,17 @@
+#attending p {
+    font-size: 12px;
+
+}
+
+.attendingBox {
+ 
+    background-color: rgba(32,104,20,1);
+    border-color: #061c03;
+    color: #061c03;
+    font-family: 'Londrina Solid', cursive;
+    font-weight: 400;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5mm;
+    
+  }

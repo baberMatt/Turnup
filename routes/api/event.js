@@ -1,16 +1,17 @@
 const router = require("express").Router();
-const controller = require("../../controllers/");
+const { response } = require("express");
+const controller = require("../../controllers/event.js");
 
-// Matches with "/api/user"
+// Matches with "/api/event"
 router.route("/")
   .get(controller.findAll)
   .post(controller.create);
 
-// Matches with "/api/user/:id"
-router
-  .route("/:id")
+router.route("/one")
+  .post(controller.findOne);
+
+router.route("/:id")
   .get(controller.findById)
   .put(controller.update)
   .delete(controller.remove);
-
 module.exports = router;

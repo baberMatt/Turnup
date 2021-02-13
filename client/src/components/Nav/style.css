@@ -1,22 +1,33 @@
-
-
-#tabContainer {
-    position: relative;
-    z-index: 1;
+#nav {
     width: 100%;
-    height: 250px;
+    height: 6vh;
+    background: -webkit-linear-gradient(left, rgba(32,104,20,1) 0%,rgba(125,211,55,1) 25%,rgba(125,211,55,1) 50%,rgba(125,211,55,1) 75%,rgba(32,104,20,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    font-family: 'Londrina Solid', cursive;
+
+    font-weight: 400;
 }
 
-.navtab {
-    background-image: url("../../assets/popuptab.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 120px;
-    height: 120px;
-    z-index: 1;
-    position: absolute;
+
+
+
+#icon {
+    width: auto;
+    height: 6vh;
 }
+
+.navRow{
+    height: 6vh;
+    width: 100%;
+    position: relative;
+}
+
+.iconCol {
+    display: inline-block;
+    width: 1%;
+}
+
+
+
 
 .navlink {
     position: absolute;
@@ -29,101 +40,23 @@
    
 }
 
-a:link {
-    color: #f1e3cc;
+.navTab a:link {
+    color: #061c03;
+    font-family: 'Londrina Solid', cursive;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
-#navtab1 {
-    position: absolute;
-    z-index: 1;
-    left: 23rem;
-    top: 4rem;
-    
-}
-#navtab2 {
-    position: absolute;
-    z-index: 1;
-    left: 24%;
-    top: 23%;
-    transform: rotate(11deg);
-}
-#navtab3 {
-    position: absolute;
-    z-index: 1;
-    left: 31%;
-    top: 34%;
-    transform: rotate(16deg);
-}
-#navtab4 {
-    position: absolute;
-    z-index: 1;
-    left: 38%;
-    top: 41%;
-    transform: rotate(8deg);
+.navTab a:visited {
+    color: #061c03;
 }
 
-#navtab1isUp {
-    position: absolute;
-    z-index: 1;
-    left: 17%;
-    top: 1rem;
-}
-#navtab1isUp {
-    position: absolute;
-    z-index: 1;
-    left: 17%;
-    top: 1rem;
-}
-#navtab1isUp {
-    position: absolute;
-    z-index: 1;
-    left: 17%;
-    top: 1rem;
-}
-#navtab1isUp {
-    position: absolute;
-    z-index: 1;
-    left: 17%;
-    top: 1rem;
+.navTab a:hover {
+    color: #ddc3ba;
 }
 
-/* #navtab1 {
-    position: absolute;
-    z-index: 1;
-    left: 17%;
-    top: 21%;
-    
-} */
-/* .isUp2 {
-
+.navTab a:active {
+    color: #b361a9;
 }
-.isUp3 {
-
-}
-.isUp4 {
-
-} */
 
 
-/* 
-var moveVals = [];
-        switch (tabNumb) {
-            case 1:
-                moveVals.push("3%");
-                moveVals.push("21%");
-                break;
-            case 2:
-                moveVals.push("4%");
-                moveVals.push("23%");
-                break;
-            case 3:
-                moveVals.push("14%");
-                moveVals.push("34%");
-                break;
-            case 4:
-                moveVals.push("23%");
-                moveVals.push("41%");
-                break;
-            default:
-                break;
-        } */

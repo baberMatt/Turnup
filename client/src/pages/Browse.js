@@ -4,22 +4,54 @@ import API from "../utils/api/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Carousell from '../components/Carousel/Carousel'
+import BrowseCard from '../components/Browsecard/browseCard'
+import right from "../assets/angle-arrow-pointing-to-right.svg"
 
 
+function Browse(props) {
+    const [browse, setBrowse] = useState([]);
+    const [sortedFood, setSortedFood] = useState([]);
+    const [sortedMaker, setSortedMaker] = useState([]);
+    const [browseC, setBrowseC] = useState([]);
+    const [index, setIndex] = useState(0)
+    const [init, setInit] = useState(false)
+    useEffect(() => {
+        API.getEvents()
+            .then(res => {
+                setBrowse(res.data)
+
+            })
+    }, [browse]);
+
+    useEffect(() => {
+        let food = []
+        let maker = []
+        browse.map(item => {
+            if (item.category.first === "Food") {
+                food.push(item)
+            } else (maker.push(item))
+        })
+
+        let foodCard = food.slice(0, 5)
+        let makerCard = maker.slice(0, 5)
 
 
+        setSortedFood(foodCard)
+        setSortedMaker(makerCard)
+    }, [browse]);
 
-function Browse() {
-    const [Browse, setBrowse] = useState("");
 
 
     return (
-        <div>
+        <div id="browsePage">
 
             <Container fluid>
                 <Row >
-                    <div className="col-12">
-                        <Carousell></Carousell>
+
+                    <div className="col-12 ">
+                        <Carousell
+                        browse={browse}
+                        ></Carousell>
                     </div>
 
                 </Row>
@@ -27,68 +59,55 @@ function Browse() {
 
 
                 <Row>
-                    <div className="col-12" style={{ textAlign: "center" }}>
-                        <h2 >Genre 1</h2>
+                    <div className="col-12" style={{ textAlign: "center", marginTop: "3rem", marginBottom: "2rem" }}>
+                        <h2 className="cardCategory">Food</h2>
                     </div>
                 </Row>
-                <Row style={{ bottom: "5rem" }}>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
+                
+                <div className="netf d-flex justify-content-center">
+                    {sortedFood.map(item =>
+                    (
+                        <BrowseCard 
+                            cardTitle={item.eventName}
+
+                            eventString={item.eventString}
+                            cardText={item.briefDetails} 
+                            cardPhoto={item.photo1}/>
+
+                            
+                             
+
+                    )
+                    )}
+
+                </div>
+
+                <Row>
+                    <div className="col-12" style={{ textAlign: "center",  marginTop: "3rem", marginBottom: "2rem" }}>
+                        <h2 className="cardCategory">Makers</h2>
                     </div>
                 </Row>
 
+                <div className="netf d-flex justify-content-center">
+                        {sortedMaker.map(item =>
+                        (
+                            <BrowseCard
+                                cardTitle={item.eventName}
+                                cardText={item.briefDetails} 
+                                cardPhoto={item.photo1}
+                                />
+                        )
+                        )}
+                </div>
                 <Row>
-                    <div className="col-12" style={{ textAlign: "center" }}>
-                        <h2 >Genre 1</h2>
-                    </div>
+                    <div></div>
                 </Row>
-                <Row style={{ bottom: "5rem" }}>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-4 my-5">
-                        <div className="card" style={{ width: "20rem" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                </Row>
+
+
+
+
+
+
             </Container>
         </div>
     );
