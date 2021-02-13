@@ -17,7 +17,7 @@ function Attendees(props) {
 
 
 
-  console.log(props.eventInFocus.attendees)
+  
   return (
 
     <div>
