@@ -1,0 +1,28 @@
+input, select, textarea {
+    margin-top: 3%;
+    width: 100%;
+    display: block;
+}
+
+.hostingButtons {
+    background-color:  #7dd337 !important;
+    border-color: #061c03;
+    color: #061c03;;
+    -moz-box-shadow:    inset 0px 0px 12px 2px rgba(32,104,20,1);
+    -webkit-box-shadow: inset 0px 0px 12px 2px rgba(32,104,20,1);
+    box-shadow:         inset 0px 0px 12px 2px rgba(32,104,20,1);
+}
+
+.modal-content {
+  background-color:  rgba(32,104,20,1) !important;
+  border-color: #061c03;
+  color: white;
+  -moz-box-shadow:    inset 0px 0px 12px 2px rgb(7, 34, 2);
+  -webkit-box-shadow: inset 0px 0px 12px 2px rgb(7, 34, 2);
+  box-shadow:         inset 0px 0px 12px 2px rgb(7, 34, 2);
+}
+
+#modalBackground {
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+}
