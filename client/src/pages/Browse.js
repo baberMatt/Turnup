@@ -4,26 +4,42 @@ import API from "../utils/api/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Carousell from '../components/Carousel/Carousel'
-import food1 from '../assets/food1.jpg'
-import food2 from '../assets/food2.jpg'
-import food3 from '../assets/pancakes.jpg'
 import BrowseCard from '../components/Browsecard/browseCard'
-
+import right from "../assets/angle-arrow-pointing-to-right.svg"
 
 
 function Browse(props) {
     const [browse, setBrowse] = useState([]);
     const [sortedFood, setSortedFood] = useState([]);
     const [sortedMaker, setSortedMaker] = useState([]);
-
-
+    const [browseC, setBrowseC] = useState([]);
+    const [index, setIndex] = useState(0)
+    const [init, setInit] = useState(false)
     useEffect(() => {
         API.getEvents()
             .then(res => {
                 setBrowse(res.data)
 
             })
-    }, [browse])
+    }, [browse]);
+
+    useEffect(() => {
+        let food = []
+        let maker = []
+        browse.map(item => {
+            if (item.category.first === "Food") {
+                food.push(item)
+            } else (maker.push(item))
+        })
+
+        let foodCard = food.slice(0, 5)
+        let makerCard = maker.slice(0, 5)
+
+
+        setSortedFood(foodCard)
+        setSortedMaker(makerCard)
+    }, [browse]);
+
 
 
     return (
@@ -31,7 +47,8 @@ function Browse(props) {
 
             <Container fluid>
                 <Row >
-                    <div className="col-12">
+
+                    <div className="col-12 ">
                         <Carousell></Carousell>
                     </div>
 
@@ -40,39 +57,41 @@ function Browse(props) {
 
 
                 <Row>
-                    <div className="col-12" style={{ textAlign: "center" }}>
-                        <h2 >Food</h2>
+                    <div className="col-12" style={{ textAlign: "center", marginTop: "3rem", marginBottom: "2rem" }}>
+                        <h2 className="cardCategory">Food</h2>
                     </div>
                 </Row>
 
-                <div className="netf">
-
-
-                    {browse.map(item =>
-                        item.category.first === "Food" ? (
-                            <BrowseCard
-                                cardTitle={item.eventName}
-                                cardText={item.briefDetails} />
-                        ) : ("")
+                <div className="netf d-flex justify-content-center">
+                    {sortedFood.map(item =>
+                    (
+                        <BrowseCard
+                            cardTitle={item.eventName}
+                            cardText={item.briefDetails} />
+                    )
                     )}
-
 
                 </div>
 
                 <Row>
                     <div className="col-12" style={{ textAlign: "center" }}>
-                        <h2 >Makers</h2>
+                        <h2 className="cardCategory">Makers</h2>
                     </div>
                 </Row>
-                <Row style={{ bottom: "5rem" }}>
-                    {browse.map(item =>
-                        item.category.first === "Maker" ? (
+
+                <div className="netf d-flex justify-content-center">
+                        {sortedMaker.map(item =>
+                        (
                             <BrowseCard
                                 cardTitle={item.eventName}
                                 cardText={item.briefDetails} />
-                        ) : ("")
-                    )}
+                        )
+                        )}
+                </div>
+                <Row>
+                    <div></div>
                 </Row>
+
 
 
 
