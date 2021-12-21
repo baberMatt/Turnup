@@ -13,40 +13,54 @@ import App from "../../App.js"
 
 function Nav(props) {
 
-
-
+    function about(e) {
+        e.preventDefault();
+        props.setAlertProps("about")
+        props.toggleAlert()
+    }
 
 
     return (
         <div id="nav">
-            <Row noGutters className="navRow d-flex justify-content-center">
-                <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    {/* <a href="#" className="m-auto">Search</a> */}
+            <Row noGutters className="navRow d-flex mt-2 justify-content-between">
+                <Col lg={3} className="navTab text-center d-flex align-items-center ml-2  ">
+                    <img className="mx-1" src="https://img.icons8.com/color/60/000000/facebook.png" />
+                    <img className="mx-1" src="https://img.icons8.com/fluency/60/000000/instagram-new.png" />
+                    <img className="mx-1" src="https://img.icons8.com/fluency/60/000000/twitter.png" />
                 </Col>
 
-                <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    <a href="/" className="m-auto">Home</a>
-                </Col>
 
-                <img id="icon" className="img-fluid " src={Turnupicon} />
 
-                <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    <a href="/browse" className="m-auto">Browse</a>
+                <Col lg={3} className="navTab text-center  p-0">
+                    <Row className="d-flex align-items-center"> 
+                        <Col lg={3} className="navTab text-center ">
+                            <a href="/" ><img id="icon" className="img-fluid " src={Turnupicon} /> </a>
+                        </Col>
+                        <Col lg={3} className="navTab text-center ">
+                            <a href="/" onClick={e => about(e)} className="m-auto">About</a>
+                        </Col>
+
+                        <Col lg={3} className="navTab text-center ">
+                            <a href="/browse" className="m-auto">Browse</a>
+
+                        </Col>
+
+                        <Col lg={3} className="navTab text-center ">
+                            <a href="#" className="m-auto">Search</a>
+                        </Col>
+                    </Row>
                 </Col>
-                
-                <Col lg={1} className="navTab text-center d-flex align-items-center ">
-                    {/* <a href="#" className="m-auto">About Us</a> */}
-                </Col>
-                <Col lg={2} className=" loginCol p-0">
-                    {!props.isLogged ? "" : <a href={"/user/" + props.user.Username}><button className="btn btn1">Profile</button></a>}
+                <Col lg={3} className=" loginCol p-0">
+                    {!props.isLogged ? "" : <a href={"/user/" + props.user.Username}><button className="mt-1 btn btn3">Profile</button></a>}
                     {!props.isLogged ?
                         <Login
-                           
+                            userName={props.userName}
+                            password={props.password}
                             setUserName={props.setUserName}
                             setPassword={props.setPassword}
                             handleSignIn={props.handleSignIn}
                         />
-                        : <button onClick={props.logOut} className="ml-1 btn btn1">Log Out</button>}
+                        : <button onClick={props.logOut} className="ml-1 btn btn3">Log Out</button>}
                 </Col>
             </Row>
 

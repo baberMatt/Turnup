@@ -33,7 +33,7 @@ function Attendees(props) {
               <Col md={10}>
 
                 {props.eventInFocus.attendees.map(item =>
-                   item.guest.hosting.includes(props.eventInFocus._id) ? (
+                   item.guest.hosting === props.eventInFocus._id ? (
                     <Eventguest
                       eventID={props.eventInFocus._id}
                       host={"host"}
@@ -53,8 +53,7 @@ function Attendees(props) {
           </Container>
         </ModalBody>
         <ModalFooter>
-          <Button className="attendeeButtons" color="primary" >Submit</Button>{' '}
-          <Button className="attendeeButtons" color="secondary" onClick={props.toggleAttendees}>Cancel</Button>
+          <Button className="btn btn3" color="secondary" onClick={props.toggleAttendees}>Close</Button>
         </ModalFooter>
       </Modal>
     </div >

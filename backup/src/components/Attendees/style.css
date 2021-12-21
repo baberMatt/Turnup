@@ -1,0 +1,15 @@
+.attendeeButtons {
+  background-color:  #7dd337 !important;
+  border-color: #061c03;
+  color:#061c03;
+  -moz-box-shadow:    inset 0px 0px 12px 2px rgba(32,104,20,1);
+  -webkit-box-shadow: inset 0px 0px 12px 2px rgba(32,104,20,1);
+  box-shadow:         inset 0px 0px 12px 2px rgba(32,104,20,1);
+}
+
+#attendeesBody {
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 400;
+}
+
+

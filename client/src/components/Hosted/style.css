@@ -1,26 +1,54 @@
-.shadowBox {
-    width: 100%;
-    border-radius: 5mm;
-    -moz-box-shadow:    3px 3px 5px 6px rgb(65, 62, 62);
-  -webkit-box-shadow: 3px 3px 5px 6px rgb(68, 65, 65);
-  box-shadow:         3px 3px 5px 6px rgb(65, 64, 64);
+:root{
+  --defaultBG: url("../../assets/4short.png");
 }
+
+.shadowBox {
+  width: 100%;
+  border-radius: 2mm;
+  -moz-box-shadow: 1px 1px 7px 3px rgb(65, 62, 62);
+  -webkit-box-shadow: 1px 1px 7px 3px rgb(68, 65, 65);
+  box-shadow: 1px 1px 7px 3px rgb(65, 64, 64);
+  
+}
+
 
 .hostedRoot {
-    width: 100%;
-    margin-left: 7%;
-    margin-right: 7%;
+  width: 100%;
+  margin-left: 7%;
+  margin-right: 7%;
+  border-color: #3f0033;
+  
 }
 
+.hostedContent {
+  border-radius: 2mm;
+  background-color: rgba(250, 235, 215, .6);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2mm;
+}
+
+.hostedBG {
+  border-radius: 2mm;
+}
+
+
 .hostedBox {
- 
-  background-color: rgba(32,104,20,1);
-  border-color: #061c03;
-  color: #061c03;
+
+  background-color: antiquewhite;
+  border-color: #3f0033;
+  color: #3f0033;
   font-family: 'Londrina Solid', cursive;
   font-weight: 400;
   border-style: solid;
   border-width: 1px;
-  border-radius: 5mm;
+  border-radius: 2mm;
+
+}
+
+.underline {
+  border-bottom: 1px solid rgba(63, 0, 51, .4);
+  width: 100%;
   
 }
+

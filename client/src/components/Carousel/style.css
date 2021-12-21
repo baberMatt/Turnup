@@ -6,13 +6,28 @@
     margin: auto;
     border: .8mm;
     border-style: solid;
-    border-color: rgba(0, 0, 0, 0.377);
-    border-radius: 5mm;
+    border-color: #3f0033;
+    border-radius: 2mm;
     position: relative;
     object-fit: cover;
-    opacity: 1;
-    
-    
+    opacity: 1;   
+}
+
+#carouselOver {
+    position: relative;
+}
+
+#carouselText {
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 2mm;
+    min-width: 20vw;
+    position: absolute !important;
+    z-index: 3;
+    top: 3%;
+    left: 56%;
+    color: #3f0033;
+    font-family: 'Londrina Solid', cursive;
+    font-weight: 400;
 }
 
 @media only screen and (min-width: 1301px) {

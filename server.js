@@ -1,4 +1,5 @@
-const express = require("express");
+const express = require('express');
+const path = require('path')
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -18,6 +19,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 passport.use(new LocalStrategy(
   function (username, password, done) {
@@ -61,14 +64,6 @@ app.post('/login', function (req, res, next) {
   })(req, res, next);
 });
 
-// app.post('/login',
-//   passport.authenticate('local', {
-//     successRedirect: '/event',
-//     failureRedirect: '/user',
-//     failureFlash: true
-//   })
-// );
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -78,7 +73,8 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/turnup",
+const mongoURI = process.env.MONGODB_URI || "mongodb://localhost/turnup"
+mongoose.connect(mongoURI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -86,7 +82,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/turnup",
     useFindAndModify: false
   }
 );
-
 
 // Start the API server
 app.listen(PORT, function () {

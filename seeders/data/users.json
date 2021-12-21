@@ -42,5 +42,39 @@
         "islogged": false,
         "events": [],
         "hosting": []
+      },
+      "dobRich" : {
+        "Username": "dobRich",
+        "firstName": "Rich",
+        "Password": "asdf",
+        "lastName": "Dobrzeniecki",
+        "about": "Hey there, I am new to Turnup, can't cant wait to check out some pop ups!",
+        "email": "dobRich@gmail.com",
+        "islogged": false,
+        "attending": [],
+        "hosting": []
+      },
+      "blueLogan" : {
+        "Username": "bluLogan",
+        "firstName": "Logan",
+        "Password": "asdf",
+        "lastName": "Blueter",
+        "about": "Hey there, I am new to Turnup, can't cant wait to check out some pop ups!",
+        "email": "bluLogan@gmail.com",
+        "islogged": false,
+        "attending": [],
+        "hosting": []
+      },
+      "mooJonathon" :{
+        "Username": "mooJonathon",
+        "firstName": "Jonathon",
+        "Password": "asdf",
+        "lastName": "Moore",
+        "about": "Hey there, I am new to Turnup, can't cant wait to check out some pop ups!",
+        "email": "mooJonathon@gmail.com",
+        "islogged": false,
+        "attending": [],
+        "hosting": []
       }
+      
 }
