@@ -10,14 +10,24 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Pizza from '../assets/pizzaFeature.png'
 import Jumbotron from '../components/Jumbotron/jumbotron.js'
+import Nav from '../components/Nav/nav.js'
+import floatImg from '../assets/landingFloat.png'
+import cloud1 from '../assets/cloud1.png'
+import cloud2 from '../assets/cloud2.png'
+import cloud3 from '../assets/cloud3.png'
+import plane from '../assets/plane.png'
 import '../App.css';
 
 
 
 
 function Landing(props) {
+ 
   
-
+  
+  useEffect(() => {
+    
+  }, [])
   
   
 
@@ -32,19 +42,26 @@ function Landing(props) {
   // }
 
   // signIn();
-  function alert() {
-    alert("test")
-  }
+  
 
 
   return (
-
-    <div id="landingPage">
+    
+    <div id="landingPage d-flex">
+      {/* <button className="btn btn3 mt-5" onClick={props.toggleSignUp}>Sing Up</button> */}
+      <h1 id="turnupTitle" className="">Turnup</h1>
+      <img id="float" className="img-fluid " src={floatImg} />
+      <img id="cloud1" className="img-fluid cloud1fly " src={cloud1} />
+      <img id="cloud2" className="img-fluid cloud2fly" src={cloud2} />
+      <img id="cloud3" className="img-fluid cloud3fly" src={cloud3} />
+      <img id="cloud4" className="img-fluid cloud4fly" src={cloud1} />
+      <img id="plane" className="img-fluid planeFly" onClick={props.toggleSignUp} src={plane} />
       
-      <Jumbotron 
+      
+      {/* <Jumbotron 
       toggleSignUp={props.toggleSignUp}
-      />
-      <Container fluid className="p-0" id="landingContent" >
+      /> */}
+      {/* <Container fluid className="p-0" id="landingContent" >
 
         <Row id="landing1" className="d-flex pt-5 justify-content-center">
 
@@ -71,7 +88,7 @@ function Landing(props) {
           </Col>
         </Row>
 
-      </Container>
+      </Container> */}
     </div>
   );
 }

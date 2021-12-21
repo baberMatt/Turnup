@@ -1,0 +1,17 @@
+#login {
+    width: 70%;
+    color: #061c03;
+    font-family: 'Londrina Solid', cursive;
+    font-weight: 400;
+}
+
+.input {
+    width: 6rem;
+}
+
+.loginCol {
+    position: absolute;
+    left: 81%;
+    top: .5rem;
+}
+

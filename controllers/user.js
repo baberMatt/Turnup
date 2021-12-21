@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// Defining methods for the booksController
+
 module.exports =
 //users
 {
@@ -19,8 +19,8 @@ module.exports =
             .populate({
                 path: "attending",
                 populate: {
-                  path: 'event',
-                  model: "Event"
+                    path: 'event',
+                    model: "Event"
                 }
             })
             .then(dbModel => res.json(dbModel))
@@ -34,10 +34,11 @@ module.exports =
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
+        console.log(req.body)
         db.User
             .create(req.body)
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {return res.status(422).json({error: err.keyPattern}), console.log(err.keyPattern)});
     },
     update: function (req, res) {
         console.log("user " + req.body)
@@ -46,14 +47,25 @@ module.exports =
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    remove: function (req, res) {
-        db.User
-            .findById({ _id: req.params.id })
-            .then(dbModel => dbModel.remove())
+    remove: function (req, res, next) {
+        console.log("fired remove")
+        db.User.findById(req.params.id, function(err, user) {
+                    console.log(user)
+                    db.Event.remove({
+                        "_id": {
+                            $in: user.hosting
+                        }
+                    }, function (err) {
+                        if (err) return next(err);
+                        user.remove();
+                    })
+                }
+            )
+            // .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    
+
 
 
 };

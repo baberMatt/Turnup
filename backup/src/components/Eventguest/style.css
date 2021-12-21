@@ -1,0 +1,28 @@
+.thumbnail {
+    width: 100% !important;
+    height: auto !important;
+}
+
+#eventGuest p {
+    font-size: 14px;
+    margin: 2px;
+}
+
+#eventGuest a:link {
+    color: #061c03;
+    font-family: 'Londrina Solid', cursive;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  
+  #eventGuest a:visited {
+    color: #061c03;
+  }
+  
+  #eventGuest a:hover {
+    color: #ddc3ba;
+  }
+  
+  #eventGuest a:active {
+    color: #b361a9;
+  }

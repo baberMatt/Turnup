@@ -1,5 +1,5 @@
 #login {
-    width: 70%;
+    width: 100%;
     color: #061c03;
     font-family: 'Londrina Solid', cursive;
     font-weight: 400;
@@ -10,8 +10,8 @@
 }
 
 .loginCol {
-    position: absolute;
+    /* position: absolute;
     left: 81%;
-    top: .5rem;
+    top: .5rem; */
 }
 

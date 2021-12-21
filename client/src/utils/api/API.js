@@ -50,8 +50,32 @@ export default {
     return axios.post("/api/event/one", eventRequest);
   },
   updateEvent: function (id, update) {
-
-    // console.log("axios event " + update)
     return axios.put("/api/event/" + id, update);
   },
+  deleteEvent: function (id) {
+    return axios.delete("/api/event/" + id);
+  },
+  postProfileImage: function (id, imageData) {
+    return axios.post("/api/upload/profileImage/" + id, imageData);
+  },
+
+  deleteProfileImage: function (id, imageData) {
+    return axios.delete("/api/upload/profileImage/" + id, imageData);
+  },
+
+  postEventImage: function (id, imageData) {   
+    return axios.post("/api/upload/eventImage/" + id, imageData);
+  },
+  
+  deleteEventImage: function (id, imageData) {
+    return axios.delete("/api/upload/eventImage/" + id, imageData);
+  },
+
+  // postThumbImage: function (id, imageData) {
+  //   return axios.post("/api/upload/eventImage/" + id, imageData);
+  // },
+  
+  // deleteThumbImage: function (id, imageData) {
+  //   return axios.delete("/api/upload/eventImage/" + id, imageData);
+  // },
 };

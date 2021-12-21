@@ -6,7 +6,7 @@ module.exports =
 
     findAll: function (req, res) {
         db.Event
-            .find()
+            .find({})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
@@ -14,7 +14,7 @@ module.exports =
         db.Event
             .create(req.body)
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {return res.status(422).json({error: err.keyPattern}), console.log(err.keyPattern)});
     },
     findOne: function (req, res){
         console.log(req.body)
@@ -46,9 +46,10 @@ module.exports =
     },
     remove: function (req, res) {
         db.Event
+            
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {res.status(422).json(err); console.log(err)});
     },
 }
