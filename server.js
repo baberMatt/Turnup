@@ -66,18 +66,16 @@ app.post('/login', function (req, res, next) {
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
-
-  
+  app.use(express.static(path.join(__dirname, "/client/build"))); 
 }
 // Add routes, both API and view
 app.use(routes);
 
 
 // Connect to the Mongo DB
-// const mongoURI = process.env.MONGODB_URI || "mongodb://localhost/turnup"
-const mongoURI = 'mongodb+srv://baber:Go09ob26!@baber.qpona.mongodb.net/Turnup?retryWrites=true&w=majority';
-mongoose.connect(mongoURI,
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/turnup"
+// const MONGODB_URI = 'mongodb+srv://baber:Go09ob26!@baber.qpona.mongodb.net/turnup?retryWrites=true&w=majority';
+mongoose.connect(MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
