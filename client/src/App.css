@@ -12,7 +12,8 @@ html {
 }
 
 body {
-  background: url(assets/turnupBGshort.png);
+  /* background: url(assets/turnupBGshort.png); */
+  background-color: red;
   overflow-x: hidden;
   
 }
