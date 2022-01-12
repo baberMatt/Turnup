@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "buildFull": "node build && gulp",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -37,5 +38,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.1.11",
+    "rewire": "^6.0.0"
   }
 }
