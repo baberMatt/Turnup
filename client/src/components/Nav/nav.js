@@ -1,15 +1,9 @@
-import React, { useState } from "react";
-import Container from 'react-bootstrap/Container'
+import React from "react";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Turnupicon from '../../assets/turnupIcon.png'
-import "./style.css"
-
 import Login from "../Login"
-import App from "../../App.js"
-
-
-// import UserContext from "../../utils/userContext";
+import "./style.css"
 
 function Nav(props) {
 
@@ -19,7 +13,6 @@ function Nav(props) {
         props.toggleAlert()
     }
 
-
     return (
         <div id="nav">
             <Row noGutters className="navRow d-flex mt-2 justify-content-between">
@@ -28,11 +21,8 @@ function Nav(props) {
                     <img className="mx-1" src="https://img.icons8.com/fluency/60/000000/instagram-new.png" />
                     <img className="mx-1" src="https://img.icons8.com/fluency/60/000000/twitter.png" />
                 </Col>
-
-
-
                 <Col lg={3} className="navTab text-center  p-0">
-                    <Row className="d-flex align-items-center"> 
+                    <Row className="d-flex align-items-center">
                         <Col lg={3} className="navTab text-center ">
                             <a href="/" ><img id="icon" className="img-fluid " src={Turnupicon} /> </a>
                         </Col>
@@ -66,7 +56,6 @@ function Nav(props) {
 
         </div>
     );
-
 }
 
 export default Nav;

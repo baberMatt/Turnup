@@ -1,16 +1,9 @@
 import React from "react";
-import { Button } from 'reactstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "./style.css"
-import Signup from "../signup/signup"
-
-// import UserContext from "../../utils/userContext";
 
 function Login(props) {
-
-
-
   return (
     <div id="login" className=" d-flex justify-content-end flex-row no-wrap">
       <Row>

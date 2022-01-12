@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import API from "../utils/api/API";
-// import { Link } from "react-router-dom";
 import Menuitem from "../components/Menuitem/Menuitem.js";
-// import API from "../utils/api/API";
-import { Modal, Form, } from "react-bootstrap"
+import { Modal } from "react-bootstrap"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import placeholder from '../assets/4short.png'
-import food2 from '../assets/food2.jpg'
-import food3 from '../assets/pancakes.jpg'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
-
 function Event(props) {
-    const [Event, setEvent] = useState("");
     const [editEvent, setEditEvent] = useState(false);
     const [addDate, setAddDate] = useState(false);
     const [eventNameUpdate, setEventNameUpdate] = useState();
@@ -27,68 +19,54 @@ function Event(props) {
     const [eventDetailsUpdate, setEventDetailsUpdate] = useState();
     const [datesForSubmit, setDatesForSubmit] = useState({})
     const [userIsAttending, setUserIsAttending] = useState(false);
+    const [startDate, setStartDate] = useState(new Date());
+    const [eventAuth, setEventAuth] = useState(false);
+    const [show, setShow] = useState(false);
 
-    const [addMenuItem, setAddMenuItem] = useState(false)
-    const [menutItem, setMenuItem] = useState("");
-    const [itemDetails, setItemDetails] = useState("");
-    const [itemPrice, setItemPrice] = useState(0);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
+    //  MENU OFFLINE
+    // const [addMenuItem, setAddMenuItem] = useState(false)
+    // const [menutItem, setMenuItem] = useState("");
+    // const [itemDetails, setItemDetails] = useState("");
+    // const [itemPrice, setItemPrice] = useState(0);
 
     let { currentEvent } = useParams();
-    const history = useHistory();
-
-    const [startDate, setStartDate] = useState(new Date());
-
-
-
-    const [eventAuth, setEventAuth] = useState(false);
-
-
-
-
-
 
     useEffect(() => {
-
         API.getEventstring({ eventString: currentEvent }).then(res => {
-            if(!res.data) {
-                window.location.href = '/notfound'
+            if (!res.data) {
+                window.location.href = '/notfound';
             }
-            props.setEventInFocus(res.data)
-            setEventNameUpdate(props.eventInFocus.eventName)
-            setEventBriefDetailsUpdate(props.eventInFocus.briefDetails)
-            setEventLocationUpdate(props.eventInFocus.location)
-            setEventDetailsUpdate(props.eventInFocus.details)
-        })
+            props.setEventInFocus(res.data);
+            setEventNameUpdate(props.eventInFocus.eventName);
+            setEventBriefDetailsUpdate(props.eventInFocus.briefDetails);
+            setEventLocationUpdate(props.eventInFocus.location);
+            setEventDetailsUpdate(props.eventInFocus.details);
+        });
 
-    }, [currentEvent])
+    }, [currentEvent]);
 
     useEffect(() => {
         function checkHost(host) {
-            let checkHostArr = []
-            props.user.hosting.map(item => checkHostArr.push(item._id))
+            let checkHostArr = [];
+            props.user.hosting.map(item => checkHostArr.push(item._id));
             if (checkHostArr.includes(host)) {
                 setEventAuth(true);
             }
-
-        }
-        checkHost(props.eventInFocus._id)
+        };
+        checkHost(props.eventInFocus._id);
 
         function checkAttending(attending) {
-            let checkAttending = attending.map(item => { return item.event })
-            // let checkAttendees = []
-            // props.eventInFocus.attendees.map(item => checkAttending.push(item._id))
+            let checkAttending = attending.map(item => { return item.event });
             if (checkAttending.includes(props.eventInFocus._id)) {
-                setUserIsAttending(true)
+                setUserIsAttending(true);
             }
-        }
-        checkAttending(props.user.attending)
+        };
+        checkAttending(props.user.attending);
 
-    }, [props.user])
-
-
-
-
+    }, [props.user]);
 
     function editingEvent() {
         if (!editEvent) {
@@ -106,26 +84,26 @@ function Event(props) {
             setEventDetailsUpdate("");
             setEventBriefDetailsUpdate("");
             setEventLocationUpdate("");
-            setEditEvent(false)
+            setEditEvent(false);
             window.location.reload(false);
-        }
-    }
+        };
+    };
 
     function handleEventNameChange(event) {
-        setEventNameUpdate(event.target.value)
-    }
+        setEventNameUpdate(event.target.value);
+    };
     function handleEventBriefDetailsUpdate(event) {
-        setEventBriefDetailsUpdate(event.target.value)
-    }
+        setEventBriefDetailsUpdate(event.target.value);
+    };
     function handleEventLocationUpdate(event) {
-        setEventLocationUpdate(event.target.value)
-    }
+        setEventLocationUpdate(event.target.value);
+    };
     function handleEventDetailsUpdate(event) {
-        setEventDetailsUpdate(event.target.value)
-    }
+        setEventDetailsUpdate(event.target.value);
+    };
     function handleEventImgUploadChange(event) {
-        props.setImageForUpload(event.target.files[0])
-    }
+        props.setImageForUpload(event.target.files[0]);
+    };
 
     function updateEvent() {
         API.updateEvent(props.eventInFocus._id, {
@@ -135,89 +113,77 @@ function Event(props) {
             details: eventDetailsUpdate
         })
             .catch(err => console.log(err));
-    }
+    };
 
 
     function addingDate() {
         setAddDate(true);
-    }
+    };
 
     function submitDate() {
-        var dateFormat = require("dateformat")
-        let formattedDate = (dateFormat(startDate, "dddd, mmmm, dS, yyyy"))
-        API.updateEvent(props.eventInFocus._id, { $push: { datesOpen: formattedDate } })
-        setAddDate(false)
+        var dateFormat = require("dateformat");
+        let formattedDate = (dateFormat(startDate, "dddd, mmmm, dS, yyyy"));
+        API.updateEvent(props.eventInFocus._id, { $push: { datesOpen: formattedDate } });
+        setAddDate(false);
         window.location.reload();
-    }
+    };
 
     function handleAddDate(e) {
-        console.log(e.target)
         if (e.target.classList.contains("checkedBtn")) {
-            e.target.classList.remove("checkedBtn")
-            e.target.innerHTML = "x"
-            let dateID = e.target.getAttribute('data-numb')
-            let newDates = { ...datesForSubmit }
-            delete newDates[`${dateID}`]
-            setDatesForSubmit(newDates)
+            e.target.classList.remove("checkedBtn");
+            e.target.innerHTML = "x";
+            let dateID = e.target.getAttribute('data-numb');
+            let newDates = { ...datesForSubmit };
+            delete newDates[`${dateID}`];
+            setDatesForSubmit(newDates);
         } else {
-            e.target.classList.add("checkedBtn")
-            e.target.innerHTML = "o"
-            let dateID = e.target.getAttribute('data-numb')
-            let chosenDate = document.getElementById(`dateItem${dateID}`).textContent
-            setDatesForSubmit({ ...datesForSubmit, [dateID]: chosenDate })
-        }
-
-    }
+            e.target.classList.add("checkedBtn");
+            e.target.innerHTML = "o";
+            let dateID = e.target.getAttribute('data-numb');
+            let chosenDate = document.getElementById(`dateItem${dateID}`).textContent;
+            setDatesForSubmit({ ...datesForSubmit, [dateID]: chosenDate });
+        };
+    };
 
     function handleAttending() {
         if (!props.isLogged) {
-            alert("We sorry, you need to sign in to attend and event, if you don't have an account, create one from our home page")
+            alert("We sorry, you need to sign in to attend and event, if you don't have an account, create one from our home page");
         } else {
-            let dateSubmission = Object.values(datesForSubmit)
-            console.log(dateSubmission)
-            API.updateUser(props.user._id, { $push: { "attending": { event: props.eventInFocus._id, dates: dateSubmission } } })
-            console.log(dateSubmission)
-            API.updateEvent(props.eventInFocus._id, { $push: { "attendees": { guest: props.user._id, dates: dateSubmission } } })
-            alert("cant wait to see you there")
+            let dateSubmission = Object.values(datesForSubmit);
+            API.updateUser(props.user._id, { $push: { "attending": { event: props.eventInFocus._id, dates: dateSubmission } } });
+            API.updateEvent(props.eventInFocus._id, { $push: { "attendees": { guest: props.user._id, dates: dateSubmission } } });
+            alert("cant wait to see you there");
             window.location.reload();
         }
-
         handleClose();
-    }
-
-
+    };
 
     function deleteThisEvent() {
-        props.setAlertProps("deleteEvent")
-        props.toggleAlert()
-    }
+        props.setAlertProps("deleteEvent");
+        props.toggleAlert();
+    };
 
-    const [show, setShow] = useState(false);
+    // ** MENU FUNCTIONALITY OFFLINE ** 
+    // 
+    // function addingMenuItem() {
+    //     setAddMenuItem(true)
+    // }
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // function submitMenuItem() {
+    //     API.updateEvent(props.eventInFocus._id, {
+    //         $push:
+    //         {
+    //             "menu":
+    //             {
+    //                 menuItem: menutItem,
+    //                 itemDetails: itemDetails,
+    //                 itemPrice: itemPrice
 
-
-
-    function addingMenuItem() {
-        setAddMenuItem(true)
-    }
-
-    function submitMenuItem() {
-        API.updateEvent(props.eventInFocus._id, {
-            $push:
-            {
-                "menu":
-                {
-                    menuItem: menutItem,
-                    itemDetails: itemDetails,
-                    itemPrice: itemPrice
-
-                }
-            }
-        })
-        setAddMenuItem(false)
-    }
+    //             }
+    //         }
+    //     })
+    //     setAddMenuItem(false)
+    // }
 
     function removeBannerImage() {
         API.updateEvent(props.eventInFocus._id, {
@@ -226,7 +192,7 @@ function Event(props) {
             .catch(err => console.log(err))
             .then(API.deleteEventImage(props.eventInFocus.images.banner, {}))
         window.location.reload(false);
-    }
+    };
 
     function removeThumbImage() {
         API.updateEvent(props.eventInFocus._id, {
@@ -235,31 +201,23 @@ function Event(props) {
             .catch(err => console.log(err))
             .then(API.deleteEventImage(props.eventInFocus.images.thumb, {}))
         window.location.reload(false);
-    }
+    };
 
     function bailOnEvent() {
-
         API.updateUser(props.user._id, { $pull: { attending: { event: props.eventInFocus._id } } })
             .then(res => console.log(res))
             .catch(err => console.log(err))
             .then(API.updateEvent(props.eventInFocus._id, { $pull: { attendees: { guest: props.user._id } } }))
             .then(res => console.log(res))
             .catch(err => console.log(err))
-
         window.location.reload(false);
-
-    }
-
-    console.log(props.user)
-
+    };
 
     return (
         <div id="event" className="d-flex justify-content-center">
             <Container fluid>
-
                 <div className="shadowEvent eventMain">
                     <Row className="mt-3 headerContent mx-0   eventContent d-flex justify-content-center">
-
                         <Col md={12} id="bannerCol" className="d-flex p-0 justify-content-center">
                             {props.eventInFocus.images.banner !== "none" ? <img id="bannerImage" src={'../../../uploads/eventImage/' + props.eventInFocus.images.banner} /> : <img id="bannerImage" src={placeholder} />}
                             <div id="bannerText" className="text-right" >
@@ -267,7 +225,6 @@ function Event(props) {
                                 {editEvent ? <input id="briefDetailsEl" type="text" value={eventBriefDetailsUpdate} onChange={handleEventBriefDetailsUpdate} placeholder={eventBriefDetailsUpdate} /> : <h5 id="briefDetailsEl">{props.eventInFocus.briefDetails}</h5>}
                             </div>
                             {editEvent ? <div id="bannerUpload">
-
                                 <h6 className="text-center">Upload a Banner Image </h6>
                                 <div className="d-flex flex-column align-items-center">
                                     {props.eventInFocus.images.banner !== "none" ?
@@ -280,7 +237,6 @@ function Event(props) {
                                             <button className="mt-2 h-50 w-50 btn btn3" onClick={() => props.uploadImage("banner")} >Submit</button>
                                         </div>
                                     }
-
                                 </div>
                             </div> : ""}
                             {editEvent ? <div id="thumbUpload" className="d-flex flex-column align-items-center">
@@ -297,7 +253,6 @@ function Event(props) {
                                             <button className="mt-2 h-50 w-50 btn btn3" onClick={() => props.uploadImage("thumb")} >Submit</button>
                                         </div>
                                     }
-
                                 </div>
                             </div> : ""}
                         </Col>
@@ -398,7 +353,6 @@ function Event(props) {
                     </Col>
 
                 </Row> */}
-
                 <>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
@@ -423,12 +377,9 @@ function Event(props) {
                         </Modal.Footer>
                     </Modal>
                 </>
-
-
             </Container>
         </div>
     );
-}
-
+};
 
 export default Event;

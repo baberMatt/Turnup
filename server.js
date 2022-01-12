@@ -24,19 +24,17 @@ app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 passport.use(new LocalStrategy(
   function (username, password, done) {
-    console.log(username, password)
     User.findOne({ Username: username }, function (err, user) {
       if (err) { return done(err); }
-      console.log(user)
       if (!user) {
         console.log("user doesnt not exist")
         return done(null, false, { message: 'Incorrect username.' });
-      }
+      };
       console.log(user.Password)
       if (user.Password != password) {
         console.log("password incorrect")
         return done(null, false, { message: 'Incorrect password.' });
-      }
+      };
       return done(null, user);
     });
   }
@@ -54,7 +52,6 @@ passport.deserializeUser(function (id, done) {
 
 app.post('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
-    console.log("in route", user)
     if (err) { return next(err); }
     if (!user) { return res.json("incorrect username"); }
     req.logIn(user, function (err) {
@@ -64,13 +61,10 @@ app.post('/login', function (req, res, next) {
   })(req, res, next);
 });
 
-// Serve up static assets (usually on heroku)
+// Serve up static assets (on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/client/build"))); 
 }
-// Add routes, both API and view
-app.use(routes);
-
 
 // Connect to the Mongo DB
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/turnup"
@@ -84,7 +78,8 @@ mongoose.connect(MONGODB_URI,
   }
 );
 
-// Start the API server
+app.use(routes);
+
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Event = require("./event")
+const Event = require("./event");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -35,7 +35,7 @@ userSchema.pre('remove', function(next) {
   Event.update({attendees: {$elemMatch: { guest: this._id}}}, { $pull: { attendees: { guest: this._id } } }, { multi: true } )
   .then(res => (console.log("the response", res)))
   next(); 
-})
+});
 
 const User = mongoose.model("User", userSchema);
 

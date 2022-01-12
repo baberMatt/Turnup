@@ -1,9 +1,7 @@
 const db = require("../models");
 
 module.exports =
-//event
 {
-
     findAll: function (req, res) {
         db.Event
             .find({})
@@ -17,7 +15,6 @@ module.exports =
             .catch(err => {return res.status(422).json({error: err.keyPattern}), console.log(err.keyPattern)});
     },
     findOne: function (req, res){
-        console.log(req.body)
         db.Event
         .findOne({ eventString: req.body.eventString })
         .populate({
@@ -33,12 +30,10 @@ module.exports =
     findById: function (req, res) {
         db.Event
             .findById(req.params.id)
-            // .populate("hosting")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
-        console.log("event " + req.body)
         db.Event
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbModel => res.json(dbModel))
@@ -46,10 +41,9 @@ module.exports =
     },
     remove: function (req, res) {
         db.Event
-            
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => {res.status(422).json(err); console.log(err)});
-    },
+    }
 }

@@ -32,18 +32,12 @@ input {
 
 .tooltip-inner {
     max-width: 100% !important;
-
-    /* font-family: 'Londrina Solid', cursive;
-    font-weight: 200; */
-    /* color: #3f0033 !important;
-    background-color: rgba(24, 22, 22, 0.8) !important; */
 }
 
 .pulse {
     animation-name: pulse_animation;
     animation-duration: 1500ms;
     transform-origin:70% 70%;
-    /* animation-iteration-count: infinite; */
     animation-timing-function: linear;
 }
 

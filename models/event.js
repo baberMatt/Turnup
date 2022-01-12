@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./user")
+const User = require("./user");
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
@@ -35,20 +35,17 @@ const eventSchema = new Schema({
 
 eventSchema.pre('remove', function(next) {
   mongoose.model("User").updateMany({ attending: { $elemMatch: { event: this._id }}}, { $pull: { attending: { event: this._id } } }, { multi: true })
-  .then(res => (console.log("the response", res)))
+  .then(res => (console.log("the response", res)));
   next(); 
   
-})
+});
 
 eventSchema.pre('remove', function(next) {
   mongoose.model("User").updateOne({ hosting: this._id }, { $pull: { hosting: this._id } })
-  .then(res => (console.log("the response", res)))
+  .then(res => (console.log("the response", res)));
   next(); 
-})
-
+});
 
 const Event = mongoose.model("Event", eventSchema);
-
-
 
 module.exports = Event;

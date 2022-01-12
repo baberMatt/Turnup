@@ -41,7 +41,6 @@ function Attending(props) {
                         </Row>}
                 </Col>
             </div>
-
         </div>
     );
 }

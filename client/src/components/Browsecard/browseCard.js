@@ -1,7 +1,4 @@
 import React from "react";
-import { Button } from 'reactstrap';
-// import "./style.css"
-
 
 function BrowseCard(props) {
     return (

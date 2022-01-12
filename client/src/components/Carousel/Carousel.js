@@ -7,9 +7,6 @@ import {
   CarouselCaption
 } from 'reactstrap';
 import "./style.css"
-import wb1 from '../../assets/wolfboy1.png'
-import taco from '../../assets/taco2.png'
-import sugar from '../../assets/sugarsmoke.png'
 import placeholder from '../../assets/4short.png'
 
 
@@ -24,23 +21,21 @@ const Carousell = (props) => {
   carouselBrowse.push(props.browse[random])
   carouselBrowse.push(props.browse[random])
   carouselBrowse.push(props.browse[random])
-  // console.log(carouselBrowse)
 
-  console.log("browsey", props.browse)
   const items = [
     {
-      src: wb1,
+      src: "",
       altText: 'Slide 1',
       caption: ''
     },
     {
-      src: taco,
+      src: "",
       altText: 'Slide 2',
       caption: ''
     },
     {
 
-      src: sugar,
+      src: "",
       altText: 'Slide 3',
       caption: ''
     }
@@ -55,9 +50,6 @@ const Carousell = (props) => {
     }
   }, [props.browse])
 
-  useEffect(() => {
-    console.log("HERE", carouselEvents)
-  }, [carouselEvents])
 
   const next = () => {
     if (animating) return;
@@ -83,7 +75,6 @@ const Carousell = (props) => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-
         {item.images.banner !== "none" ? <img style={{ height: "50vh", objectFit: "cover" }} id="bannerImage" src={'../../../uploads/eventImage/' + item.images.banner} /> : <img id="bannerImage" src={placeholder} />}
         <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
       </CarouselItem>

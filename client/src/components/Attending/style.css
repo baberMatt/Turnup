@@ -4,7 +4,6 @@
 }
 
 .attendingBox {
- 
     background-color: antiquewhite;
     border-color: #061c03;
     color: #061c03;
@@ -13,5 +12,4 @@
     border-style: solid;
     border-width: 1px;
     border-radius: 5mm;
-    
-  }
+}

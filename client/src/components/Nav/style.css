@@ -4,19 +4,15 @@
     background: transparent;
     font-family: 'Londrina Solid', cursive;
     position: absolute;
-    /* top: 50%; */
     font-weight: 400;
 }
-
-
-
 
 #icon {
     width: auto;
     height: 6vh;
 }
 
-.navRow{
+.navRow {
     height: 6vh;
     width: 100%;
     position: relative;
@@ -27,17 +23,12 @@
     width: 1%;
 }
 
-
-
-
 .navlink {
     position: absolute;
     top: 35%;
     left: 30%;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 18px;
-   
-   
 }
 
 .navTab a:link {
@@ -58,5 +49,3 @@
 .navTab a:active {
     color: #b361a9;
 }
-
-

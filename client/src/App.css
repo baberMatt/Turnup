@@ -1,14 +1,5 @@
-/* -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc; */
-
-
-/* Template/BG */
 html {
   font-size: 16px;
-
-  
-
 }
 
 body {
@@ -37,8 +28,6 @@ a:active {
 }
 
 
-
-
 .btn3 {
   background-color: #c58bb0 !important;
   border-color: rgb(88,5,77);
@@ -57,11 +46,6 @@ a:active {
   width: 100vw;
   height: 100vh;
   background-color: transparent;
-  /* background-image: url(assets/turnupNewBG.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto; */
-
 }
 
 #turnupTitle {
@@ -94,7 +78,6 @@ a:active {
                  18px -7px 1px rgba(126,68,118,0.5),
                  0px 0px 17px rgba(126,68,118,.2);
   filter: drop-shadow(16px -7px 18px rgba(44, 11, 33, 0.7));
-
 }
 
 #signUp {
@@ -328,62 +311,12 @@ a:active {
   }
 }
 
-
-
-
-
-
 #landingContent {
   position: relative;
-  /* margin-top: 76vh; */
   color: #3f0033;
   font-family: 'Londrina Solid', cursive;
   font-weight: 400;
 
-}
-
-#landing1 {
-  width: 100vw;
-  height: 35vh;
-  background-image: url("./assets/turnupBGxshort.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-
-#landing1 .header {
-  margin-left: -5rem;
-}
-
-#landing1 .bodyText {
-  margin-left: 5rem;
-}
-
-#landing3 .header {
-  margin-right: -5rem;
-}
-
-#landing3 .bodyText {
-  margin-right: 5rem;
-}
-
-#landing2 {
-  width: 100vw;
-  height: 35vh;
-  background-image: url("./assets/pancakes.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#landing3 {
-  width: 100vw;
-  height: 35vh;
-  background-image: url("./assets/turnupBGxshort.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 
@@ -422,8 +355,6 @@ a:active {
 }
 
 .contentBox {
-  /* margin-left: 6%;
-  margin-right: 6%; */
   background-image: url("./assets/contentBG.png");
   background-size: cover;
   border-color: #3f0033;
@@ -433,13 +364,7 @@ a:active {
   border-style: solid;
   border-width: 1px;
   border-radius: 2mm;
-  /* -moz-box-shadow:    inset 0px 0px 24px 12px rgba(32,104,20,1);
-  -webkit-box-shadow: inset 0px 0px 24px 12px rgba(32,104,20,1);
-  box-shadow:         inset 0px 0px 24px 12px rgba(32,104,20,1); */
-
-
 }
-
 
 
 .shadowUser {
@@ -456,7 +381,6 @@ a:active {
 .shadowUser.about {
   margin-right: 15% !important;
   margin-left: 15% !important;
-  
 }
 
 #attendingBox {
@@ -464,11 +388,11 @@ a:active {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 #aboutHR {
   width: 90%;
   border-color: #3f0033;
   opacity: .2;
-  
 }
 
 .editButtons {
@@ -513,7 +437,6 @@ a:active {
   background-image: url("./assets/turnupBGlong.png");
   font-family: 'Londrina Solid', cursive;
   font-weight: 400;
-
 }
 
 #event p {
@@ -541,16 +464,9 @@ a:active {
   margin-top: 7%;
 }
 
-.eventContent {
-  /* margin-left: 8%;
-  margin-right: 8%; */
-
-}
-
 .shadowEvent {
   margin-right: 8%;
   margin-left: 8%;
-  /* margin-bottom: 5%; */
   border-radius: 2mm;
   -moz-box-shadow: 1px 1px 15px 3px rgb(65, 62, 62);
   -webkit-box-shadow: 1px 1px 15px 3px rgb(68, 65, 65);
@@ -567,7 +483,6 @@ a:active {
   border-width: 1px;
   border-bottom-left-radius: 2mm;
   border-bottom-right-radius: 2mm;
-
 }
 
 #bannerCol {
@@ -594,7 +509,6 @@ a:active {
   border-top-left-radius: 2mm;
   border-top-right-radius: 2mm;
   -webkit-mask-image: -webkit-linear-gradient(-135deg, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .5) 49%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 1) 100%);
-  /* Chrome10-25,Safari5.1-6 */
 }
 
 #bannerText {
@@ -603,7 +517,6 @@ a:active {
   z-index: 2;
   left: 10%;
   color: #3f0033;
-
 }
 
 #eventNameEl, #breifDetailsEl {
@@ -671,7 +584,6 @@ a:active {
   transform: scale(1.1) !important;
 }
 
-
 .bcard {
   height: 80%;
 }
@@ -707,16 +619,10 @@ a:active {
 
 }
 
-.netf {
-  margin-bottom: 3rem;
-}
-
 .smoke {
   background-color: rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: 0px 0px 25px 40px rgba(255, 255, 255, 0.3);
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow: 0px 0px 25px 40px rgba(255, 255, 255, 0.3);
-  /* Firefox 3.5 - 3.6 */
   box-shadow: 0px 0px 25px 40px rgba(255, 255, 255, 0.3);
 }
 

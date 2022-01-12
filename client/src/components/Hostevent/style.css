@@ -4,20 +4,10 @@ input, select, textarea {
     display: block;
 }
 
-.hostingButtons {
-    background-color:  #7dd337 !important;
-    border-color: #061c03;
-    color: #061c03;;
-    -moz-box-shadow:    inset 0px 0px 12px 2px rgba(32,104,20,1);
-    -webkit-box-shadow: inset 0px 0px 12px 2px rgba(32,104,20,1);
-    box-shadow:         inset 0px 0px 12px 2px rgba(32,104,20,1);
-}
-
 .modal-content {
   background-image: url("../../assets/contentBG.png") !important;
   border-color: #061c03;
   color: #1d0018;
-  
 }
 
 #modalBackground {

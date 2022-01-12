@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import "./style.css"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -12,9 +12,7 @@ function Alert(props) {
 
 
   return (
-
     <div>
-
       <Modal id="signUpBody" isOpen={props.modalAlert} toggle={props.toggleAlert} className={className}>
         <ModalHeader toggle={props.toggleAlert}>
           {props.alert === "welcome" ? <h4>Welcome!!!</h4> : ""}
@@ -52,7 +50,6 @@ function Alert(props) {
               <button onClick={props.deleteEvent} className="btn btn3 editButtons">Delete It!</button>
             </div>
             : ""}
-
         </ModalBody>
         <ModalFooter>
           <Button className="btn btn3" color="secondary" onClick={props.toggleAlert}>Close</Button>

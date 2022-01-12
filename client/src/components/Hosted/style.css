@@ -1,4 +1,4 @@
-:root{
+:root {
   --defaultBG: url("../../assets/4short.png");
 }
 
@@ -8,7 +8,6 @@
   -moz-box-shadow: 1px 1px 7px 3px rgb(65, 62, 62);
   -webkit-box-shadow: 1px 1px 7px 3px rgb(68, 65, 65);
   box-shadow: 1px 1px 7px 3px rgb(65, 64, 64);
-  
 }
 
 
@@ -17,7 +16,6 @@
   margin-left: 7%;
   margin-right: 7%;
   border-color: #3f0033;
-  
 }
 
 .hostedContent {
@@ -32,9 +30,7 @@
   border-radius: 2mm;
 }
 
-
 .hostedBox {
-
   background-color: antiquewhite;
   border-color: #3f0033;
   color: #3f0033;
@@ -43,12 +39,9 @@
   border-style: solid;
   border-width: 1px;
   border-radius: 2mm;
-
 }
 
 .underline {
   border-bottom: 1px solid rgba(63, 0, 51, .4);
   width: 100%;
-  
 }
-

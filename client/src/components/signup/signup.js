@@ -5,25 +5,18 @@ import Overlay from "react-bootstrap/Overlay";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-
-
-
 function Signup(props) {
-
   const [show, setShow] = useState(false);
   const target = useRef(null);
   
-
   useEffect(() => {
     if (props.showWarning === "Try another password...") {
-      setShow(!show)
+      setShow(!show);
       setTimeout(() => {
-        setShow(show)
+        setShow(show);
       },  2000);
     }
-
-  }, [props.showWarning])
-
+  }, [props.showWarning]);
 
   const {
     buttonLabel,
@@ -33,7 +26,6 @@ function Signup(props) {
   return (
 
     <div>
-
       <Modal id="signUpBody" isOpen={props.modalSignUp} toggle={props.toggleSignUp} className={className}>
         <ModalHeader toggle={props.toggleSignUp}>
           <h4>Welcome to Turnup</h4>
@@ -65,7 +57,6 @@ function Signup(props) {
                 </Tooltip>
               )}
             </Overlay>
-
             <input onChange={e => props.setPassword(e.target.value)} type="password" name="pass" id="pass" className="m-0" placeholder="*******" />
           </div>
           <div className="">
@@ -84,8 +75,8 @@ function Signup(props) {
         </ModalFooter>
       </Modal>
     </div >
-  )
-}
+  );
+};
 
 
 export default Signup;

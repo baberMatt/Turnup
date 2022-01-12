@@ -1,3 +1,5 @@
+// this data is for is npm run seed, the json in seeders/data is for npm run seedgoose 
+
 let mongoose = require("mongoose");
 let db = require("../models");
 

@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./style.css"
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
-
-
-
+import "./style.css"
 
 function Hostevent(props) {
-
     const [startDate, setStartDate] = useState(new Date())
 
     useEffect(() => {
@@ -23,21 +18,19 @@ function Hostevent(props) {
 
     function hostFormSubmit() {
         props.handleHostFormSubmit();
-        
     }
-
 
     return (
 
         <div>
 
             <Modal id="modalBackground" isOpen={props.modalHost} toggle={props.toggleHost} className={className}>
-                <ModalHeader  className="py-2" toggle={props.toggleHost}>
+                <ModalHeader className="py-2" toggle={props.toggleHost}>
                     <h4>Gives us some details about your event.</h4>
                     {props.showWarning ?
-                    <h5 className="warning pulse text-center ml-5 mb-0">{props.showWarning}</h5>
-                    : <h6>Dont worry, you'll be able to add more info and update this info on the hosted page...</h6>}
-                    
+                        <h5 className="warning pulse text-center ml-5 mb-0">{props.showWarning}</h5>
+                        : <h6>Dont worry, you'll be able to add more info and update this info on the hosted page...</h6>
+                    }
                 </ModalHeader>
                 <ModalBody className="py-2">
                     <div className="d-inline-block">
@@ -75,14 +68,14 @@ function Hostevent(props) {
                     </div>
                     <p className="my-0">Intial Date<span className="asterisk">*</span></p>
                     <div className="d-flex my-0">
-                    <DatePicker
-                        selected={startDate}
-                        dateFormat="eeee MMM dd, yyyy"
-                        onChange={date => setStartDate(date)}
-                        selectsStart
-                        startDate={startDate}
-                    />
-                    <p className="text-center m-auto">pick a date, you can add more later</p>
+                        <DatePicker
+                            selected={startDate}
+                            dateFormat="eeee MMM dd, yyyy"
+                            onChange={date => setStartDate(date)}
+                            selectsStart
+                            startDate={startDate}
+                        />
+                        <p className="text-center m-auto">pick a date, you can add more later</p>
                     </div>
                 </ModalBody>
                 <ModalFooter className="py-2">
