@@ -10,6 +10,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require("./models/user")
 var session = require("express-session")
 
+// this is production
+
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: false }));
