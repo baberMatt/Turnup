@@ -56,7 +56,7 @@ router.route("/profileImage/:id")
                 imageData: req.file.path
             }
         };
-	console.log(req.file.filename)
+        
         db.User
             .findOneAndUpdate({ _id: req.params.id }, update)
             .then(dbModel => res.json(dbModel))
@@ -78,9 +78,9 @@ router.route("/profileImage/:id")
 
 router.route("/eventImage/:id")
     .post(upload2.single('imageData'), (req, res, next) => {
-       		console.log(req.file);
-	 if (req.body.type === "banner") {
-            const update = { images: { banner: req.file.filename, thumb: req.body.thumb } };
+        if (req.body.type === "banner") {
+            let nameForDB = req.file.path.split("\\");
+            const update = { images: { banner: nameForDB[2], thumb: req.body.thumb } };
             db.Event
                 .findOneAndUpdate({ _id: req.params.id }, update)
                 .then(dbModel => res.json(dbModel))
