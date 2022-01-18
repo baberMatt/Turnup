@@ -65,6 +65,7 @@ export default {
   },
 
   postEventImage: function (id, imageData) {   
+    console.log(id)
     return axios.post("/api/upload/eventImage/" + id, imageData);
   },
   
