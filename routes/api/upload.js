@@ -77,18 +77,17 @@ router.route("/profileImage/:id")
     });
 
 router.route("/eventImage/:id")
+    console.log("eventImage route")
     .post(upload2.single('imageData'), (req, res, next) => {
         if (req.body.type === "banner") {
-            let nameForDB = req.file.path.split("\\");
-            const update = { images: { banner: nameForDB[2], thumb: req.body.thumb } };
+            const update = { images: { banner: req.file.filename, thumb: req.body.thumb } };
             db.Event
                 .findOneAndUpdate({ _id: req.params.id }, update)
                 .then(dbModel => res.json(dbModel))
                 .catch(err => res.status(422).json(err));
         };
         if (req.body.type === "thumb") {
-            let nameForDB = req.file.path.split("\\");
-            const update = { images: { thumb: nameForDB[2], banner: req.body.banner } };
+            const update = { images: { thumb: req.file.filename, banner: req.body.banner } };
             db.Event
                 .findOneAndUpdate({ _id: req.params.id }, update)
                 .then(dbModel => res.json(dbModel))
