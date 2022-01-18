@@ -109,7 +109,8 @@ function App() {
           })
           .catch(err => {
             alert("Error while uploading image using multer");
-          });
+          })
+          .then(() => { window.location.reload(false); })
         break;
       case "banner":
         imageFormObj.append("banner", eventInFocus.images.banner);
@@ -123,7 +124,8 @@ function App() {
           })
           .catch(err => {
             alert("Error while uploading image using multer");
-          });
+          })
+          .then(() => { window.location.reload(false); })
         break;
       case "thumb":
         imageFormObj.append("banner", eventInFocus.images.banner);
@@ -137,11 +139,11 @@ function App() {
           })
           .catch(err => {
             alert("Error while uploading image using multer");
-          });
+          })
+          .then(() => { window.location.reload(false); })
       default:
         break;
     };
-    window.location.reload(false);
   };
 
   function logOut() {
