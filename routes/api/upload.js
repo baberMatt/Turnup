@@ -79,7 +79,7 @@ router.route("/profileImage/:id")
 router.route("/eventImage/:id")
     
     .post(upload2.single('imageData'), (req, res, next) => {
-        console.log(req.file)
+        console.log(req.params.id)
         if (req.body.type === "banner") {
             const update = { images: { banner: req.file.filename, thumb: req.body.thumb } };
             db.Event
